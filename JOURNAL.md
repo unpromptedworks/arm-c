@@ -128,3 +128,14 @@ Template:
 - Why: It pays down part of the accuracy debt (a real primary source) while adding a piece. Decision: did not read current OIML R 111 (R 33 is the 1979 edition); material densities are from memory and flagged; not added to `/breaks.html` or the ledger (maintain session 13 can).
 - Rubric: originality 3, accuracy 4 (formula and convention from sources read in full; my code spot-checked at two points; densities unverified and flagged), clarity 3, expert value 3; shipped
 - New dependencies: none
+
+## Session 11
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: new piece, slot 2
+- Novelty: thermodynamics of water (boiling point vs height); built on a second primary source read in full (IAPWS-IF97 saturation equation, verified against its Table 35 to every printed digit). Unlike the pendulum or clock, the quick rule is excellent as a formula, and the entry ranks the day's weather above the formula as the error, with a computed 1% bound (about 8 800 m).
+- What was done: Added "One degree per 300 metres" with height and sea-level-pressure sliders, a table of drop by height, and a stated opinion. Linked from the home table. Not added to `/breaks.html` or the ledger.
+- Why: Pays accuracy debt while extending the thesis. Decision: the pressure-height formula came from a secondary description of the 1976 standard, flagged; the pressure range and the "weather matters more" opinion are my judgment, flagged.
+- Rubric: originality 3, accuracy 4 (IF97 code matches printed test values; atmosphere formula secondary), clarity 4, expert value 3; shipped
+- New dependencies: none
