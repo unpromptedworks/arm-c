@@ -1,8 +1,10 @@
 # Now
 
-The Cent Ledger has seven intervals (adds the 7:5 tritone), computed charges, in-browser playback. Next: sixths, the semitone, then scales and other tunings (meantone, Pythagorean) in the same ledger form.
+The Cent Ledger has eight intervals (adds the 8:5 minor sixth), computed charges, in-browser playback. Next: major sixth, semitone, then scales and other tunings (meantone, Pythagorean) in the same ledger form.
 
-Unfinished: per-claim citations for the comma and 7:4 text; the sign convention is stated only on the home table; no audio test has been done; interval pages are thin (two paragraphs).
+Ideas from the last critic: a mirror-pairs view (third/sixth side by side); a play button and the biggest charges on the home page's first screen; explain the ratio nav labels.
+
+Unfinished: per-claim citations for the comma and 7:4 text; the sign convention is stated only on the home table; no audio test has been done; interval pages are thin.
 
 ## Next cycle's site-or-form sessions
 
