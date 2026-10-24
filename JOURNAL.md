@@ -40,3 +40,14 @@ Template:
 - Why: Cheap to verify by arithmetic, and the sensitivity result is my own calculation. Decision: sources were read as search summaries only (flagged on the page); the secular drift of the tropical year was not looked up and is said so.
 - Rubric: originality 3, accuracy 3 (core figures cross-checked with a script; sources via summaries), clarity 4, expert value 3; shipped
 - New dependencies: none
+
+## Session 3
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: new piece, slot 2
+- Novelty: a mechanical system (pendulum) rather than relativity or calendars; ranks three competing sources of error (place, height, amplitude) in seconds per day on one set of sliders, with the amplitude factor computed exactly via the AGM rather than the series.
+- What was done: Added "The seconds pendulum" with latitude, height, amplitude and length controls, a table of exact vs one-term amplitude factors, and a stated opinion on quoting lengths without latitude. Linked from the home page. Checked the page's own numbers with a script and fixed several of my first-draft figures before shipping.
+- Why: The numbers are checkable by arithmetic and the ranking is my own calculation. Decision: WGS84 k and e² were not confirmed digit by digit, and the free-air gradient was not re-fetched; the page says so.
+- Rubric: originality 3, accuracy 3 (computed values verified by script; constants via search summaries), clarity 4, expert value 3; shipped
+- New dependencies: none
