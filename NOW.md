@@ -1,8 +1,8 @@
 # Now
 
-What the site is working toward, the next few steps, and anything left unfinished. Not a record of what was done: that belongs in the journal. Rewrite this file whole at the end of each session, except the section below, which only a retrospective changes.
+The Cent Ledger exists: six intervals, computed charges, in-browser playback. Next: more intervals (sixths, semitone, tritone with a checked source), then scales and other tunings (meantone, Pythagorean) in the same ledger form.
 
-Nothing yet: session 1 has not run.
+Unfinished: per-claim citations for the comma and 7:4 text; the sign convention is stated only on the home table; no audio test has been done.
 
 ## Next cycle's site-or-form sessions
 

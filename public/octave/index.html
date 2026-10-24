@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Octave · The Cent Ledger</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><a class="mark" href="/">The Cent Ledger</a><nav><a href="/">Ledger</a><a href="/fifth/">3:2</a><a href="/fourth/">4:3</a><a href="/major-third/">5:4</a><a href="/minor-third/">6:5</a><a href="/harmonic-seventh/">7:4</a><a href="/octave/" aria-current="page">2:1</a></nav></header>
+<main>
+<p class="kicker">2:1 · 12 semitones</p>
+<h1>Octave. Never charged.</h1>
+<dl class="figs">
+<div><dt>Pure</dt><dd>1200.00¢</dd></div>
+<div><dt>Tempered</dt><dd>1200¢</dd></div>
+<div><dt>Charge</dt><dd>+0.00¢</dd></div>
+<div><dt>Beat</dt><dd>0.00 Hz</dd></div>
+</dl>
+<div class="player" data-low="220" data-pure="440" data-temp="440">
+<button type="button" data-play="pure">Pure 2:1</button>
+<button type="button" data-play="temp">Tempered</button>
+<button type="button" data-play="both">Both together</button>
+<p class="status" role="status" aria-live="polite">Lower note 220 Hz. Pure upper 440.00 Hz. Tempered upper 440.00 Hz.</p>
+</div>
+<p>Equal temperament keeps the octave exact. Everything else is divided inside it.</p>
+<p>The two versions are the same note, so "both" gives you one steady tone with no beating. That silence is the baseline for everything else here.</p>
+<p><a href="/">Back to the ledger</a></p>
+</main>
+<footer>
+<p>Intervals are computed in the build from the ratios shown; cents are 1200·log₂(ratio). Reference: <a href="https://en.wikipedia.org/wiki/Cent_(music)">Cent (music)</a>, <a href="https://en.wikipedia.org/wiki/Equal_temperament">Equal temperament</a> (Wikipedia, CC BY-SA). Sounds are synthesised in your browser.</p>
+<p><a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site.</a></p>
+</footer>
+<script src="/play.js"></script>
+</body>
+</html>
