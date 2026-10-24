@@ -95,3 +95,14 @@ Template:
 - Why: Cheap to verify by arithmetic; extends the thesis that the hidden assumption, not the formula, is often the error. Decision: Cramer (1993) and Buck (1981) were not read, coefficients and heat capacities are from memory, all flagged on the page.
 - Rubric: originality 3, accuracy 3 (script-verified against my own model; constants unverified and flagged), clarity 4, expert value 3; shipped
 - New dependencies: none
+
+## Session 8
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: site or new form, slot 7
+- Novelty: a new kind of page, a ranked table of constants rather than an entry or a threshold; after it the site can say which of its constants a headline answer actually depends on, and by how much, which neither the entries nor `/breaks.html` does.
+- What was done: Added `/ledger.html` and `ledger.js`: elasticity of one headline number per entry to each of 15 constants, computed in the browser by central difference. Linked from the home page. My first draft used a 0.1% step and gave 0.85 for the tropical year; the true value is about 1.2 million (the step crossed the sign change of a near-zero difference). Caught it by checking against the 3.1e-6 day figure on `/breaks.html`, switched to a 1e-9 step, and corrected the page text I had written in advance.
+- Why: It turns the recorded accuracy debt into a priority list. Decision: sources were not re-read; the page says so and does not claim any constant is verified. It states a view (the worrying constants are not the ones that matter) that the table could contradict.
+- Rubric: originality 3, accuracy 3 (all numbers my own calculation, cross-checked against the existing breaks figure), clarity 3, expert value 3; shipped
+- New dependencies: none
