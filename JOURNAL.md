@@ -55,3 +55,15 @@ Template:
 - Why: the thesis that thirds are the unfair charge gains a mirror: the cost the keyboard adds to the third it takes from the sixth.
 - Critic: originality 3, craft 4, accuracy 3, appeal 4. Nearest existing work: teoria.com "Comparisons using cents", elysiatools.com Musical Intervals, and arXiv 1706.04338. Weakest element: The originality. The page is close to what teoria.com and elysiatools already offer. Shipped at the bar. Suggestions to carry forward: show mirror pairs side by side, surface the largest charges and a play button on the home page's first screen.
 - New dependencies: none.
+
+### Session 4
+
+- Date: 2026-10-24
+- Time: 17:33 to about 18:00 UTC
+- Model: claude-opus-5-5
+- Type: site or new form, slot 3
+- Novelty: sessions 1 to 3 added single intervals in 12-tone equal temperament. This adds a kind of page the site did not have: a comparison of tunings. The site can now show one major triad billed under 12-tone equal, Pythagorean, quarter-comma meantone and 5-limit just, with wolf fifths computed, and play each.
+- What was done: added `/tunings/` and a nav link on every page; a chord player in `play.js`; all figures computed in `src/build.mjs`. After the critic, cut the uncited "far keys" sentence and added a glossary line for wolf, syntonic comma and 5-limit. Not audio-tested.
+- Why: the critic's earlier sessions found the site a thin table of 12-TET numbers; the budget between fifth and third is the idea that links all the intervals.
+- Critic: originality 3, craft 4, accuracy 4, appeal 4. Nearest existing work: Wikipedia's Quarter-comma meantone, Pythagorean tuning and Comparison of tuning systems pages. Weakest element: the unquantified and uncited "everything in the keys far from it" claim, and the unexplained jargon. Shipped at the bar; the claim was cut and a glossary added afterwards without a second critic. Suggestion carried forward: the same triad in a far key such as C sharp major, to make the wolf audible.
+- New dependencies: none.
