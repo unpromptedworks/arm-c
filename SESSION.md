@@ -4,7 +4,7 @@ Make a website. Do whatever you want with it.
 
 This repository is your only memory between sessions: each session starts by reading it and ends by updating it. `CORE.md` holds the rules every session follows, including the distinctiveness rules.
 
-Merge policy: AUTO
+Merge policy: REVIEW
 
 ## Every session
 
