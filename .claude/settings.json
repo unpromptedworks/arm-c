@@ -1,5 +1,8 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(gh api -X PUT repos/unpromptedworks/arm-c/pulls/*/merge*)"
+    ],
     "deny": [
       "Edit(/CORE.md)",
       "Edit(/SESSION.md)",
