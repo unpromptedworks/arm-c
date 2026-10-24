@@ -19,7 +19,7 @@ The operator merges every pull request that keeps the rules in `CORE.md`. Pull r
 9. Critic: start the critic and act on its verdict, as "Critic" below says.
 10. Add a journal entry, using the template in `JOURNAL.md`, and rewrite `NOW.md`.
 11. Commit to the branch this session was given (its name starts with `claude/`; if you were given none, create `claude/session-N`), push it, and open a pull request with the REST API: `gh api repos/OWNER/REPO/pulls -f title="..." -f head=BRANCH -f base=main -f body="..."`, with BRANCH from `git branch --show-current`. `gh pr` does not work in this environment. The description says what you did and what comes next.
-12. Wait for the Cloudflare check run on the pull request's head commit (`gh api repos/OWNER/REPO/commits/SHA/check-runs`). If it fails, fix the cause and push again, at most twice. If no check run appears within 10 minutes of a push, push one empty commit to start the build again. If the check still fails or never appears, say so in the pull request description and the journal entry.
+12. Wait for the Cloudflare check run on the pull request's head commit. The environment blocks a bare `sleep`, so wait with one polling command, run with the Bash tool's timeout set to 600000 milliseconds: `timeout 540 sh -c "until gh api repos/OWNER/REPO/commits/SHA/check-runs --jq '.check_runs[].status' | grep -q completed; do sleep 20; done"`. Then read the result with `gh api repos/OWNER/REPO/commits/SHA/check-runs`. If it fails, fix the cause and push again, at most twice. If no check run appears within 10 minutes of a push, push one empty commit to start the build again. If the check still fails or never appears, say so in the pull request description and the journal entry.
 
 Never merge a pull request; the operator merges.
 
@@ -40,14 +40,15 @@ Change the site's name, voice or visual identity, or `CHARTER.md`, only in a ret
 
 ## Critic
 
-The critic is a subagent defined in `.claude/agents/critic.md`, which the operator owns. It reads the site as a reader would: it finds the pages this branch changed, runs `look`, reads the pages, and searches the web for the nearest existing work. Start it with the Agent tool and give it only the session type. Tell it nothing about what you intended or why.
+The critic is a subagent defined in `.claude/agents/critic.md`, which the operator owns. It reads the site as a reader would: it finds the pages this branch changed, runs `look`, reads the pages, and searches the web for the nearest existing work. Start it with the Agent tool, with exactly this prompt and nothing else: "Session type: TYPE." Tell it nothing about what you intended or why. Wait for its verdict before you commit or push anything. If it runs in the background, do nothing else until it reports.
 
 It scores what a reader sees after the change from 1 to 5 on originality, craft, accuracy and appeal, using the anchors in its definition, and gives a verdict. The bar is 3 or more on every score, with the nearest existing work named.
 
 - At or above the bar, ship.
 - Below the bar, improve the change once, then start a fresh critic. If the change is still below the bar, move the work to `drafts/` and ship only that move and the journal entry.
+- Change nothing after the final critic's verdict, except a fix that only repairs something broken. Put its other suggestions in `NOW.md` for a later session.
 - A fix that only repairs something broken ships whatever its scores. Retrospectives skip the critic.
-- Copy the final critic's scores, nearest existing work and weakest element into the journal entry word for word. You may add your disagreement, but you may not overrule the bar.
+- Copy the final critic's scores, nearest existing work, weakest element and the prompt it reports it was given into the journal entry word for word. You may add your disagreement, but you may not overrule the bar.
 
 A draft goes in `drafts/` at the repository root, outside the published output, and nothing on the site links to it; a later session may finish it. The scores are a record of your process, not a review.
 
