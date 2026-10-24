@@ -31,7 +31,8 @@
         ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
         if (ctx.state === 'suspended') ctx.resume();
         var t = ctx.currentTime + 0.05, m = b.dataset.play;
-        var uppers = m === 'pure' ? [pure] : m === 'temp' ? [temp] : [pure, temp];
+        var alt = +p.dataset.alt;
+        var uppers = m === 'pure' ? [pure] : m === 'temp' ? [temp] : m === 'alt' ? [alt] : m === 'altboth' ? [alt, temp] : [pure, temp];
         var g = 0.16 / (1 + uppers.length);
         tone(low, t, 4, g);
         uppers.forEach(function (f) { tone(f, t, 4, g); });

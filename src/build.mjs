@@ -10,6 +10,10 @@ const intervals = [
     verdict: 'Nearly paid in full.',
     text: ['The fifth is the one interval equal temperament barely touches. The tempered fifth is about two hundredths of a semitone narrower than 3:2, and the two versions beat less than once every two seconds.',
       'This is why the compromise exists. The reason is the Pythagorean comma: twelve pure 3:2 fifths overshoot seven octaves by about 23.5 cents, and temperament closes the circle by narrowing each of the twelve fifths by about 2 cents. The thirds are then whatever that arrangement leaves them.'] },
+  { slug: 'major-second', name: 'Major second', num: 9, den: 8, semis: 2, alt: { num: 10, den: 9 },
+    verdict: 'Two pure ratios, one key: billed 4 cents against one and 18 against the other.',
+    text: ['Every other interval here has one pure ratio. The whole tone has two. The major tone is 9:8; the minor tone is 10:9. Just tuning uses both, and they differ by exactly one syntonic comma, 81:80, about 21.5 cents. The keyboard has one whole tone, 200 cents, and bills it against both.',
+      'Against 9:8 the charge is −3.91 cents, small. Against 10:9 it is +17.60, bigger than the major third\'s. Which one you are being billed against depends on where the note sits in the scale; the ledger lists 9:8 and shows 10:9 beside it. On a 220 Hz lower note the tempered tone beats against pure 9:8 at 0.56 Hz and against pure 10:9 at 2.50 Hz; "both" plays 9:8 with tempered, and the 10:9 buttons play the other. Sizes from <a href="https://en.wikipedia.org/wiki/Major_second">Major second</a> (Wikipedia, CC BY-SA).'] },
   { slug: 'fourth', name: 'Perfect fourth', num: 4, den: 3, semis: 5,
     verdict: 'Nearly paid in full, the other way.',
     text: ['The fourth is the fifth turned upside down, so its error is the same size with the opposite sign: the tempered fourth is slightly wide of 4:3 where the fifth is slightly narrow of 3:2.',
@@ -42,7 +46,12 @@ const intervals = [
   const r = i.num / i.den;
   const just = cents(r), temp = i.semis * 100;
   const fj = BASE * r, ft = BASE * 2 ** (i.semis / 12);
-  return { ...i, just, temp, err: temp - just, fj, ft, beat: Math.abs(fj - ft) };
+  const o = { ...i, just, temp, err: temp - just, fj, ft, beat: Math.abs(fj - ft) };
+  if (i.alt) {
+    const ar = i.alt.num / i.alt.den;
+    o.alt = { ...i.alt, just: cents(ar), err: temp - cents(ar), fj: BASE * ar, beat: Math.abs(BASE * ar - ft) };
+  }
+  return o;
 });
 
 const nav = (here) => `<nav><a href="/"${here === '' ? ' aria-current="page"' : ''}>Ledger</a><a href="/tunings/"${here === 'tunings' ? ' aria-current="page"' : ''}>Tunings</a>${intervals.map(i => `<a href="/${i.slug}/"${here === i.slug ? ' aria-current="page"' : ''}>${i.num}:${i.den}</a>`).join('')}</nav>`;
@@ -70,7 +79,8 @@ ${script ? '<script src="/play.js"></script>' : ''}
 </html>
 `;
 
-const row = i => `<tr><th scope="row"><a href="/${i.slug}/">${i.name}</a></th><td>${i.num}:${i.den}</td><td>${i.just.toFixed(2)}</td><td>${i.temp}</td><td class="err${Math.abs(i.err) > 10 ? ' hot' : ''}">${f2(i.err)}</td><td>${i.beat.toFixed(2)}</td></tr>`;
+const altRow = i => i.alt ? `<tr><th scope="row"><a href="/${i.slug}/">${i.name}, minor tone</a></th><td>${i.alt.num}:${i.alt.den}</td><td>${i.alt.just.toFixed(2)}</td><td>${i.temp}</td><td class="err hot">${f2(i.alt.err)}</td><td>${i.alt.beat.toFixed(2)}</td></tr>` : '';
+const row = i => `<tr><th scope="row"><a href="/${i.slug}/">${i.name}</a></th><td>${i.num}:${i.den}</td><td>${i.just.toFixed(2)}</td><td>${i.temp}</td><td class="err${Math.abs(i.err) > 10 ? ' hot' : ''}">${f2(i.err)}</td><td>${i.beat.toFixed(2)}</td></tr>` + altRow(i);
 
 const home = `<h1>Every piano is slightly out of tune, on purpose. Here is the bill.</h1>
 <p class="lede">Twelve-tone equal temperament makes all twelve semitones the same size, so a keyboard can play in every key. The price is that almost every interval except the octave is a little off from the whole-number ratio it is trying to be. This ledger lists each charge in cents (hundredths of a semitone) and lets you hear it.</p>
@@ -93,11 +103,15 @@ function intervalPage(i) {
 <div><dt>Tempered</dt><dd>${i.temp}¢</dd></div>
 <div><dt>Charge</dt><dd${Math.abs(i.err) > 1 ? ' class="hot"' : ''}>${f2(i.err)}¢</dd></div>
 <div><dt>Beat</dt><dd>${i.beat.toFixed(2)} Hz</dd></div>
+${i.alt ? `<div><dt>Charge vs ${i.alt.num}:${i.alt.den}</dt><dd class="hot">${f2(i.alt.err)}¢</dd></div>
+<div><dt>Beat vs ${i.alt.num}:${i.alt.den}</dt><dd>${i.alt.beat.toFixed(2)} Hz</dd></div>` : ''}
 </dl>
-<div class="player" data-low="${BASE}" data-pure="${i.fj}" data-temp="${i.ft}">
+<div class="player" data-low="${BASE}" data-pure="${i.fj}" data-temp="${i.ft}"${i.alt ? ` data-alt="${i.alt.fj}"` : ''}>
 <button type="button" data-play="pure">Pure ${i.num}:${i.den}</button>
 <button type="button" data-play="temp">Tempered</button>
-<button type="button" data-play="both">Both together</button>
+<button type="button" data-play="both">Both together</button>${i.alt ? `
+<button type="button" data-play="alt">Pure ${i.alt.num}:${i.alt.den}</button>
+<button type="button" data-play="altboth">${i.alt.num}:${i.alt.den} and tempered</button>` : ''}
 <p class="status" role="status" aria-live="polite">Lower note ${BASE} Hz. Pure upper ${i.fj.toFixed(2)} Hz. Tempered upper ${i.ft.toFixed(2)} Hz.</p>
 </div>
 ${i.text.map(t => `<p>${t}</p>`).join('\n')}
@@ -180,7 +194,8 @@ const play = `// Plays the lower note with the pure and/or tempered upper note. 
         ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
         if (ctx.state === 'suspended') ctx.resume();
         var t = ctx.currentTime + 0.05, m = b.dataset.play;
-        var uppers = m === 'pure' ? [pure] : m === 'temp' ? [temp] : [pure, temp];
+        var alt = +p.dataset.alt;
+        var uppers = m === 'pure' ? [pure] : m === 'temp' ? [temp] : m === 'alt' ? [alt] : m === 'altboth' ? [alt, temp] : [pure, temp];
         var g = 0.16 / (1 + uppers.length);
         tone(low, t, 4, g);
         uppers.forEach(function (f) { tone(f, t, 4, g); });

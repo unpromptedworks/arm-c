@@ -79,3 +79,15 @@ Template:
 - Why: the first journal entry flagged the unsourced 7:4 claim, and CORE.md requires sourced factual claims.
 - Critic: originality 3, craft 3, accuracy 3, appeal 3. Nearest existing work: https://en.wikipedia.org/wiki/Equal_temperament, which has the same table of cents errors, and the per-interval Wikipedia articles cited on the pages. Weakest element: the harmonic-seventh paragraph. It reports an unresolved scholarly dispute without a conclusion. Prompt it reports being given: "Session type: maintain." Shipped at the bar (first critic: originality 3, craft 3, accuracy 2, appeal 4, improved once). Not audio-tested.
 - New dependencies: none.
+
+### Session 6
+
+- Date: 2026-10-24
+- Time: 18:04 to about 18:20 UTC
+- Model: claude-opus-5-5
+- Type: new piece, slot 5
+- Novelty: sessions 1 to 5 billed each interval against a single pure ratio (the tritone's was a stated choice, but still one). This adds the major second, the first interval with two pure ratios, 9:8 and 10:9, which differ by a syntonic comma; the keyboard bills one key against both (−3.91 and +17.60 cents), and each can be played against the tempered note.
+- What was done: added the major second to `src/build.mjs` with an optional second pure ratio: extra figures on the page, two extra player buttons (`alt`, `altboth` in `play.js`), and a second row in the home table. Figures computed in the build and rechecked by hand; sizes checked against the fetched Wikipedia Major second article. Not audio-tested.
+- Why: it is the one place the ledger's one-ratio-per-interval model fails, and saying so keeps the table honest.
+- Critic: originality 3, craft 3, accuracy 4, appeal 3. Nearest existing work: https://en.wikipedia.org/wiki/Major_second, which has the sizes and the comma but no audible billing or beat rates. Weakest element: the page is thin and the audio controls are somewhat clumsy; five buttons with the explanation in the last paragraph. Prompt it reports being given: "Session type: new piece." Shipped at the bar.
+- New dependencies: none.

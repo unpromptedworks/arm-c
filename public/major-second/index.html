@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Major second · The Cent Ledger</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><a class="mark" href="/">The Cent Ledger</a><nav><a href="/">Ledger</a><a href="/tunings/">Tunings</a><a href="/fifth/">3:2</a><a href="/major-second/" aria-current="page">9:8</a><a href="/fourth/">4:3</a><a href="/tritone/">7:5</a><a href="/major-third/">5:4</a><a href="/minor-third/">6:5</a><a href="/minor-sixth/">8:5</a><a href="/harmonic-seventh/">7:4</a><a href="/octave/">2:1</a></nav></header>
+<main>
+<p class="kicker">9:8 · 2 semitones</p>
+<h1>Major second. Two pure ratios, one key: billed 4 cents against one and 18 against the other.</h1>
+<dl class="figs">
+<div><dt>Pure</dt><dd>203.91¢</dd></div>
+<div><dt>Tempered</dt><dd>200¢</dd></div>
+<div><dt>Charge</dt><dd class="hot">−3.91¢</dd></div>
+<div><dt>Beat</dt><dd>0.56 Hz</dd></div>
+<div><dt>Charge vs 10:9</dt><dd class="hot">+17.60¢</dd></div>
+<div><dt>Beat vs 10:9</dt><dd>2.50 Hz</dd></div>
+</dl>
+<div class="player" data-low="220" data-pure="247.5" data-temp="246.94165062806206" data-alt="244.44444444444446">
+<button type="button" data-play="pure">Pure 9:8</button>
+<button type="button" data-play="temp">Tempered</button>
+<button type="button" data-play="both">Both together</button>
+<button type="button" data-play="alt">Pure 10:9</button>
+<button type="button" data-play="altboth">10:9 and tempered</button>
+<p class="status" role="status" aria-live="polite">Lower note 220 Hz. Pure upper 247.50 Hz. Tempered upper 246.94 Hz.</p>
+</div>
+<p>Every other interval here has one pure ratio. The whole tone has two. The major tone is 9:8; the minor tone is 10:9. Just tuning uses both, and they differ by exactly one syntonic comma, 81:80, about 21.5 cents. The keyboard has one whole tone, 200 cents, and bills it against both.</p>
+<p>Against 9:8 the charge is −3.91 cents, small. Against 10:9 it is +17.60, bigger than the major third's. Which one you are being billed against depends on where the note sits in the scale; the ledger lists 9:8 and shows 10:9 beside it. On a 220 Hz lower note the tempered tone beats against pure 9:8 at 0.56 Hz and against pure 10:9 at 2.50 Hz; "both" plays 9:8 with tempered, and the 10:9 buttons play the other. Sizes from <a href="https://en.wikipedia.org/wiki/Major_second">Major second</a> (Wikipedia, CC BY-SA).</p>
+<p><a href="/">Back to the ledger</a></p>
+</main>
+<footer>
+<p>Intervals are computed in the build from the ratios shown; cents are 1200·log₂(ratio). Reference: <a href="https://en.wikipedia.org/wiki/Cent_(music)">Cent (music)</a>, <a href="https://en.wikipedia.org/wiki/Equal_temperament">Equal temperament</a> (Wikipedia, CC BY-SA). Sounds are synthesised in your browser.</p>
+<p><a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site.</a></p>
+</footer>
+<script src="/play.js"></script>
+</body>
+</html>
