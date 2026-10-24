@@ -67,3 +67,15 @@ Template:
 - Why: the critic's earlier sessions found the site a thin table of 12-TET numbers; the budget between fifth and third is the idea that links all the intervals.
 - Critic: originality 3, craft 4, accuracy 4, appeal 4. Nearest existing work: Wikipedia's Quarter-comma meantone, Pythagorean tuning and Comparison of tuning systems pages. Weakest element: the unquantified and uncited "everything in the keys far from it" claim, and the unexplained jargon. Shipped at the bar; the claim was cut and a glossary added afterwards without a second critic. Suggestion carried forward: the same triad in a far key such as C sharp major, to make the wolf audible.
 - New dependencies: none.
+
+### Session 5
+
+- Date: 2026-10-24
+- Time: 17:58 to about 18:20 UTC
+- Model: claude-opus-5-5
+- Type: maintain, slot 4
+- Novelty: sessions 1 to 4 added content and a tunings page; this adds nothing new and instead removes unsourced claims from four old interval pages (fourth, major third, minor third, harmonic seventh) and replaces them with computed figures or cited statements.
+- What was done: cut the string-quartet and choir claims, the "dark or thin" opinion and the "most listeners have never heard it" claim; added computed beat figures (fourth 0.33 Hz, minor third 2.37 Hz) and per-claim Wikipedia citations (Major third, Minor third, Harmonic seventh), checked against the fetched articles. The first critic scored accuracy 2 because the fourth page said only the octave is cheaper, when the fifth ties at 1.96 cents; fixed, then a fresh critic ran. `look` showed no console errors on the four pages.
+- Why: the first journal entry flagged the unsourced 7:4 claim, and CORE.md requires sourced factual claims.
+- Critic: originality 3, craft 3, accuracy 3, appeal 3. Nearest existing work: https://en.wikipedia.org/wiki/Equal_temperament, which has the same table of cents errors, and the per-interval Wikipedia articles cited on the pages. Weakest element: the harmonic-seventh paragraph. It reports an unresolved scholarly dispute without a conclusion. Prompt it reports being given: "Session type: maintain." Shipped at the bar (first critic: originality 3, craft 3, accuracy 2, appeal 4, improved once). Not audio-tested.
+- New dependencies: none.
