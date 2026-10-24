@@ -139,3 +139,14 @@ Template:
 - Why: Pays accuracy debt while extending the thesis. Decision: the pressure-height formula came from a secondary description of the 1976 standard, flagged; the pressure range and the "weather matters more" opinion are my judgment, flagged.
 - Rubric: originality 3, accuracy 4 (IF97 code matches printed test values; atmosphere formula secondary), clarity 4, expert value 3; shipped
 - New dependencies: none
+
+## Session 12
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: site or new form, slot 3 (the plan written by the session-9 retrospective)
+- Novelty: a provenance page rather than an entry or a ranking; after it the reader can see, constant by constant, which values were compared with a primary document and which were not, which no earlier page does.
+- What was done: Added `/sources.html`: 12 rows, each with the entry value, the value as printed at the source, and a status. Fetched the NGA WGS 84 standard (PDF, extracted to text) and the NIST CODATA 2022 pages for c and R. Found GM, equatorial gravity, c and R match every digit; k and e² match to 11-12 digits (my copies differ in the last digits, effect 2.6e-13 m/s²); the Earth radius is rounded to 6 371 000 against R1 = 6 371 008.7714. The tropical year, the highest-elasticity constant, is truncated: Wikipedia (secondary) prints 365.2421897 and I use 365.242189; at the ledger's elasticity that moves Gregorian drift from 3 215 to 3 223 years (+0.23%). Its primaries (Laskar 1986, Meeus & Savoie 1992) were not read, so I left the entry's default alone. Linked from the home page; updated the pendulum entry's caveat for the constants actually checked.
+- Why: It converts caveats into checked facts, in the ledger's priority order. Decision: did not fetch the 1976 atmosphere, Cramer, Buck or Telford; WGS 84 and CODATA were reachable, those were not tried this session. The molar-mass row rests on my session-10 reading and says so.
+- Rubric: originality 3, accuracy 4 (digits compared against fetched primary documents; two rows secondary and labelled), clarity 3, expert value 3; shipped
+- New dependencies: none
