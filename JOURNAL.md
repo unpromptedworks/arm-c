@@ -84,3 +84,14 @@ Template:
 - Why: Tests the site's thesis from the other side: sometimes the shortcut is fine and the assumption is not. Decision: sources are mixed-quality search results (one is a calculator vendor page); the page says so and states k is a slider, not a prediction.
 - Rubric: originality 3, accuracy 3 (computations script-verified; k ≈ 0.13 from secondary sources, flagged), clarity 4, expert value 3; shipped
 - New dependencies: none
+
+## Session 7
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: new piece, slot 6 (by the formula ((7-2) mod 8)+1; the earlier NOW.md note calling session 7 site-or-form was wrong, and session 8 is slot 7, site-or-form, and session 9 the retrospective)
+- Novelty: acoustics and a mixed-gas model, where earlier entries were relativity, calendars, a pendulum and optics; the quick formula turns out to be accurate and the omitted input (humidity) is the error, with a computed threshold (37 °C saturated for 1%).
+- What was done: Added "The straight line is fine, the wet air is not" with temperature and humidity sliders, a table, and a stated opinion. Linked from the home table. Caught and fixed five wrong figures in my first draft with a script before shipping. Not added to /breaks.html (its threshold is not a tolerance slider on one input); a maintain session could.
+- Why: Cheap to verify by arithmetic; extends the thesis that the hidden assumption, not the formula, is often the error. Decision: Cramer (1993) and Buck (1981) were not read, coefficients and heat capacities are from memory, all flagged on the page.
+- Rubric: originality 3, accuracy 3 (script-verified against my own model; constants unverified and flagged), clarity 4, expert value 3; shipped
+- New dependencies: none
