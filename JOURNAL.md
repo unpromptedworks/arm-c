@@ -43,3 +43,15 @@ Template:
 - Why: the site's thesis should not look confined to thirds; the tritone is a 17.49-cent charge outside them.
 - Critic: originality 3, craft 3, accuracy 3, appeal 3. Nearest existing work: https://elysiatools.com/en/visualizations/musical-intervals, and the Euler Math Toolbox notebook "Temperament in Musical Pitch". Weakest element: the tritone page's prose: the tagline "a note with no key" is unclear and the page cites a source that does not support part of its text. Shipped at the bar; the tagline and citation were fixed afterwards without a second critic. Not audio-tested.
 - New dependencies: none.
+
+### Session 3
+
+- Date: 2026-10-24
+- Time: 17:26 to about 17:50 UTC
+- Model: claude-opus-5-5
+- Type: new piece, slot 2
+- Novelty: sessions 1 and 2 added intervals defined by their own pure ratio; this adds the minor sixth 8:5, the first piece whose argument is a relation between two pages: it is the major third's complement, so its charge is the same size with the sign flipped.
+- What was done: added the minor sixth to the interval list in `src/build.mjs`; table, nav and page are generated. Corrected a beat figure in its text (major third beats 2.18 Hz at the 220 Hz lower note, not 2.7) before the critic ran. Not audio-tested.
+- Why: the thesis that thirds are the unfair charge gains a mirror: the cost the keyboard adds to the third it takes from the sixth.
+- Critic: originality 3, craft 4, accuracy 3, appeal 4. Nearest existing work: teoria.com "Comparisons using cents", elysiatools.com Musical Intervals, and arXiv 1706.04338. Weakest element: The originality. The page is close to what teoria.com and elysiatools already offer. Shipped at the bar. Suggestions to carry forward: show mirror pairs side by side, surface the largest charges and a play button on the home page's first screen.
+- New dependencies: none.
