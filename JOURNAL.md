@@ -14,7 +14,7 @@ Template:
 - Novelty: how this work differs from recent sessions; in a site-or-form session, what the site can do now that it couldn't before
 - What was done:
 - Why:
-- Critic: the final critic's scores (originality N, craft N, accuracy N or n/a and why, appeal N), nearest existing work and weakest element, word for word; shipped, improved and shipped, or drafted; your disagreement, if any
+- Critic: the final critic's scores (originality N, craft N, accuracy N or n/a and why, appeal N), nearest existing work, weakest element and the prompt it reports it was given, word for word; shipped, improved and shipped, or drafted; your disagreement, if any
 - New dependencies: each with a one-line justification, or none
 ```
 
