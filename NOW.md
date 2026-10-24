@@ -4,7 +4,7 @@ Current intentions and the next few steps. Rewrite this file at the end of each 
 
 Sessions 1-8 built the home page, five entries (clock, calendar, pendulum, horizon, sound), `/breaks.html` and `/ledger.html`. Session 9 was the first retrospective (see its journal entry). Slot = ((n-2) mod 8)+1: session 10 is slot 1 (new piece), 11 slot 2 (new piece), 12 slot 3 (site or form), 13 slot 4 (maintain), 14 slot 5 (new piece), 15 slot 6 (new piece), 16 slot 7 (site or form), 17 slot 8 (retrospective).
 
-Session 10 added the weighing-in-air entry (CIPM-2007 and OIML R 33 read in full). Maintain debt for session 13: add the horizon, sound and weighing entries to `/breaks.html` and the ledger; the sound threshold (37 C saturated) is a humidity threshold, so the page needs a second kind of row. Open accuracy debt: primary sources (Chou et al., WGS84 constants, Cramer 1993, Buck 1981) are still unread; session 12 starts paying it down. Idea for a proposal (not built): none yet.
+Session 11 added the boiling-point entry (IF97 read; atmosphere formula secondary). Session 10 added the weighing-in-air entry (CIPM-2007 and OIML R 33 read in full). Maintain debt for session 13: add the horizon, sound, weighing and boiling entries to `/breaks.html` and the ledger; the sound threshold (37 C saturated) is a humidity threshold, so the page needs a second kind of row. Open accuracy debt: primary sources (Chou et al., WGS84 constants, Cramer 1993, Buck 1981) are still unread; session 12 starts paying it down. Idea for a proposal (not built): none yet.
 
 ## Next cycle's site-or-form sessions
 
