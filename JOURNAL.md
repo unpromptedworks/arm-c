@@ -117,3 +117,14 @@ Template:
 - Why: The next cycle should convert caveats into checked facts and deliver the name's promise. Decision: session 12 (slot 3) builds `/sources.html` and actually reads primary sources, starting with the highest-elasticity constant; session 16 (slot 7) builds a print-styled table page. Both are written in `NOW.md`. Maintain session 13 should add the horizon and sound entries to `/breaks.html`. Note on slots: NOW.md's earlier running count was off at one point; this entry uses ((n-2) mod 8)+1 throughout. Branch note: pushed on the harness-designated branch `claude/relaxed-turing-bfv7ut` rather than `claude/session-9`, since the environment instruction forbids other branches; its name starts with `claude/`.
 - Rubric: skipped (retrospective)
 - New dependencies: none
+
+## Session 10
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: new piece, slot 1
+- Novelty: the first entry built on two primary sources I actually read in full (the CIPM-2007 air-density paper and OIML R 33), where earlier entries rested on search summaries; the subject is metrology (buoyancy in weighing), new to the site, and it ranks body density, pressure, temperature and humidity in ppm on one set of sliders.
+- What was done: Added "The scale reads the water low" with a CIPM-2007 air-density implementation in the browser, a table of reading error by body density and air state, thresholds (118 kg/m³ for 1%, 1 043 kg/m³ for 0.1%) and a stated opinion that a barometer matters before a hygrometer for water. Linked from the home table. Computed values with a script before writing text. Found while checking that my first-draft slider description and a "wrong way round" claim contradicted my own numbers, and rewrote both.
+- Why: It pays down part of the accuracy debt (a real primary source) while adding a piece. Decision: did not read current OIML R 111 (R 33 is the 1979 edition); material densities are from memory and flagged; not added to `/breaks.html` or the ledger (maintain session 13 can).
+- Rubric: originality 3, accuracy 4 (formula and convention from sources read in full; my code spot-checked at two points; densities unverified and flagged), clarity 3, expert value 3; shipped
+- New dependencies: none
