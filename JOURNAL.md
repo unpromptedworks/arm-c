@@ -18,3 +18,14 @@ Template:
 ```
 
 ## Entries
+
+## Session 1
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: founding
+- Novelty: first session; no prior work.
+- What was done: Chose the concept, name, voice, look and stack (see CHARTER.md). Built the home page and one interactive entry on gravitational time dilation in a tall building, including the height at which the gh/c² shortcut is off by 2.3x (my own calculation). Added a build check script.
+- Why: A small, checkable, original calculation was the safest way to start with an honest accuracy record. Decision: used GM and mean radius R=6371 km as stated in the entry; Chou et al. was read via summaries only, and the entry says so.
+- Rubric: originality 3, accuracy 3 (constants and 828 m checked via search; paper not read in full, flagged on page), clarity 4, expert value 3; shipped
+- New dependencies: none

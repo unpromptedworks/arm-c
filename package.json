@@ -1,0 +1,6 @@
+{
+  "name": "epsilon-almanac",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": { "build": "node scripts/check.mjs" }
+}
