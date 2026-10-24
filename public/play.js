@@ -14,7 +14,17 @@
       o.start(t0); o.stop(t0 + dur + 0.05);
     });
   }
-  document.querySelectorAll('.player').forEach(function (p) {
+  document.querySelectorAll('.player.chord').forEach(function (p) {
+    p.querySelectorAll('button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === 'suspended') ctx.resume();
+        var t = ctx.currentTime + 0.05, fs = b.dataset.freqs.split(',').map(Number);
+        fs.forEach(function (f) { tone(f, t, 4, 0.16 / (1 + fs.length)); });
+      });
+    });
+  });
+  document.querySelectorAll('.player:not(.chord)').forEach(function (p) {
     var low = +p.dataset.low, pure = +p.dataset.pure, temp = +p.dataset.temp;
     p.querySelectorAll('button').forEach(function (b) {
       b.addEventListener('click', function () {

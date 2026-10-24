@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Tunings · The Cent Ledger</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><a class="mark" href="/">The Cent Ledger</a><nav><a href="/">Ledger</a><a href="/tunings/" aria-current="page">Tunings</a><a href="/fifth/">3:2</a><a href="/fourth/">4:3</a><a href="/tritone/">7:5</a><a href="/major-third/">5:4</a><a href="/minor-third/">6:5</a><a href="/minor-sixth/">8:5</a><a href="/harmonic-seventh/">7:4</a><a href="/octave/">2:1</a></nav></header>
+<main>
+<p class="kicker">Four tunings · one chord</p>
+<h1>Meantone buys a pure third with a 5-cent fifth. Equal temperament pays 14 on the third.</h1>
+<p class="lede">Tuning is a budget. The octave is fixed, so every tuning decides which of the fifth and the third to pay for. Below, the same major triad on 220 Hz, billed against pure 5:4 and pure 3:2.</p>
+<table>
+<caption>Cents above the root. Charge is the tuning's size minus the pure ratio's (5:4 = 386.31, 3:2 = 701.96); plus is sharp, minus flat.</caption>
+<thead><tr><th>Tuning</th><th>Third</th><th>Third charge</th><th>Fifth</th><th>Fifth charge</th></tr></thead>
+<tbody>
+<tr><th scope="row">12-tone equal</th><td>400.00</td><td class="err hot">+13.69</td><td>700.00</td><td class="err">−1.96</td></tr>
+<tr><th scope="row">Pythagorean</th><td>407.82</td><td class="err hot">+21.51</td><td>701.96</td><td class="err">+0.00</td></tr>
+<tr><th scope="row">Quarter-comma meantone</th><td>386.31</td><td class="err">+0.00</td><td>696.58</td><td class="err hot">−5.38</td></tr>
+<tr><th scope="row">5-limit just</th><td>386.31</td><td class="err">+0.00</td><td>701.96</td><td class="err">+0.00</td></tr>
+</tbody>
+</table>
+<div class="player chord">
+<button type="button" data-freqs="220.000,277.183,329.628">12-tone equal</button>
+<button type="button" data-freqs="220.000,278.438,330.000">Pythagorean</button>
+<button type="button" data-freqs="220.000,275.000,328.977">Quarter-comma meantone</button>
+<button type="button" data-freqs="220.000,275.000,330.000">5-limit just</button>
+<p class="status" role="status" aria-live="polite">Plays root 220 Hz, third and fifth together for four seconds.</p>
+</div>
+<h2>What each one pays</h2>
+<p><strong>12-tone equal.</strong> Every semitone 100 cents. The keyboard.</p>
+<p><strong>Pythagorean.</strong> Built from pure 3:2 fifths only. The third is four fifths up, two octaves down.</p>
+<p><strong>Quarter-comma meantone.</strong> Fifths narrowed by a quarter of the syntonic comma so that the third comes out pure.</p>
+<p><strong>5-limit just.</strong> Pure 5:4 and pure 3:2 for this chord. Pays for it elsewhere: no fixed twelve-key keyboard can do this in every key.</p>
+<h2>Where the bill goes</h2>
+<p>Twelve pure fifths overshoot seven octaves by 23.46 cents, the Pythagorean comma. Something must absorb it. Equal temperament spreads it over all twelve fifths. Pythagorean tuning and quarter-comma meantone put it all in one fifth, the wolf: eleven good fifths and a twelfth of 678.49 cents in Pythagorean tuning, 737.64 cents in meantone. A pure fifth is 701.96; the meantone wolf is 35.68 cents sharp of that, and you can hear it. Meantone keeps the third pure by narrowing eleven fifths by 5.38 cents each, and that one is the price.</p>
+<p>That is the ledger's claim restated: equal temperament pays a little on every interval so that nothing is ruinous. Meantone pays nothing on the thirds in the keys near C and everything in the keys far from it. Sources: <a href="https://en.wikipedia.org/wiki/Pythagorean_tuning">Pythagorean tuning</a>, <a href="https://en.wikipedia.org/wiki/Quarter-comma_meantone">Quarter-comma meantone</a>, <a href="https://en.wikipedia.org/wiki/Just_intonation">Just intonation</a> (Wikipedia, CC BY-SA). Every figure here is computed in the build.</p>
+</main>
+<footer>
+<p>Intervals are computed in the build from the ratios shown; cents are 1200·log₂(ratio). Reference: <a href="https://en.wikipedia.org/wiki/Cent_(music)">Cent (music)</a>, <a href="https://en.wikipedia.org/wiki/Equal_temperament">Equal temperament</a> (Wikipedia, CC BY-SA). Sounds are synthesised in your browser.</p>
+<p><a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site.</a></p>
+</footer>
+<script src="/play.js"></script>
+</body>
+</html>

@@ -45,7 +45,7 @@ const intervals = [
   return { ...i, just, temp, err: temp - just, fj, ft, beat: Math.abs(fj - ft) };
 });
 
-const nav = (here) => `<nav><a href="/"${here === '' ? ' aria-current="page"' : ''}>Ledger</a>${intervals.map(i => `<a href="/${i.slug}/"${here === i.slug ? ' aria-current="page"' : ''}>${i.num}:${i.den}</a>`).join('')}</nav>`;
+const nav = (here) => `<nav><a href="/"${here === '' ? ' aria-current="page"' : ''}>Ledger</a><a href="/tunings/"${here === 'tunings' ? ' aria-current="page"' : ''}>Tunings</a>${intervals.map(i => `<a href="/${i.slug}/"${here === i.slug ? ' aria-current="page"' : ''}>${i.num}:${i.den}</a>`).join('')}</nav>`;
 
 const page = (title, here, body, script) => `<!doctype html>
 <html lang="en">
@@ -105,6 +105,48 @@ ${i.text.map(t => `<p>${t}</p>`).join('\n')}
   return page(`${i.name} · The Cent Ledger`, i.slug, body, true);
 }
 
+
+// Tunings: the same major triad (root, major third, fifth) under four tunings.
+const FIFTH_PY = cents(3 / 2), FIFTH_QC = cents(5) / 4;
+const tunings = [
+  { key: 'et', name: '12-tone equal', third: 400, fifth: 700,
+    note: 'Every semitone 100 cents. The keyboard.' },
+  { key: 'py', name: 'Pythagorean', third: cents(81 / 64), fifth: FIFTH_PY,
+    note: 'Built from pure 3:2 fifths only. The third is four fifths up, two octaves down.' },
+  { key: 'qc', name: 'Quarter-comma meantone', third: cents(5 / 4), fifth: FIFTH_QC,
+    note: 'Fifths narrowed by a quarter of the syntonic comma so that the third comes out pure.' },
+  { key: 'ji', name: '5-limit just', third: cents(5 / 4), fifth: cents(3 / 2),
+    note: 'Pure 5:4 and pure 3:2 for this chord. Pays for it elsewhere: no fixed twelve-key keyboard can do this in every key.' },
+].map(t => {
+  const f = c => BASE * 2 ** (c / 1200);
+  return { ...t, thirdErr: t.third - cents(5 / 4), fifthErr: t.fifth - cents(3 / 2), freqs: [BASE, f(t.third), f(t.fifth)] };
+});
+const wolfPy = 8400 - 11 * FIFTH_PY, wolfQC = 8400 - 11 * FIFTH_QC;
+const cls = e => (Math.abs(e) > 5 ? ' class="hot"' : '');
+
+const tuningsPage = () => {
+  const body = `<p class="kicker">Four tunings · one chord</p>
+<h1>Meantone buys a pure third with a 5-cent fifth. Equal temperament pays 14 on the third.</h1>
+<p class="lede">Tuning is a budget. The octave is fixed, so every tuning decides which of the fifth and the third to pay for. Below, the same major triad on ${BASE} Hz, billed against pure 5:4 and pure 3:2.</p>
+<table>
+<caption>Cents above the root. Charge is the tuning's size minus the pure ratio's (5:4 = ${cents(5 / 4).toFixed(2)}, 3:2 = ${cents(3 / 2).toFixed(2)}); plus is sharp, minus flat.</caption>
+<thead><tr><th>Tuning</th><th>Third</th><th>Third charge</th><th>Fifth</th><th>Fifth charge</th></tr></thead>
+<tbody>
+${tunings.map(t => `<tr><th scope="row">${t.name}</th><td>${t.third.toFixed(2)}</td><td class="err${Math.abs(t.thirdErr) > 5 ? ' hot' : ''}">${f2(t.thirdErr)}</td><td>${t.fifth.toFixed(2)}</td><td class="err${Math.abs(t.fifthErr) > 5 ? ' hot' : ''}">${f2(t.fifthErr)}</td></tr>`).join('\n')}
+</tbody>
+</table>
+<div class="player chord">
+${tunings.map(t => `<button type="button" data-freqs="${t.freqs.map(x => x.toFixed(3)).join(',')}">${t.name}</button>`).join('\n')}
+<p class="status" role="status" aria-live="polite">Plays root ${BASE} Hz, third and fifth together for four seconds.</p>
+</div>
+<h2>What each one pays</h2>
+${tunings.map(t => `<p><strong>${t.name}.</strong> ${t.note}</p>`).join('\n')}
+<h2>Where the bill goes</h2>
+<p>Twelve pure fifths overshoot seven octaves by ${(12 * FIFTH_PY - 8400).toFixed(2)} cents, the Pythagorean comma. Something must absorb it. Equal temperament spreads it over all twelve fifths. Pythagorean tuning and quarter-comma meantone put it all in one fifth, the wolf: eleven good fifths and a twelfth of ${wolfPy.toFixed(2)} cents in Pythagorean tuning, ${wolfQC.toFixed(2)} cents in meantone. A pure fifth is ${cents(3 / 2).toFixed(2)}; the meantone wolf is ${(wolfQC - cents(3 / 2)).toFixed(2)} cents sharp of that, and you can hear it. Meantone keeps the third pure by narrowing eleven fifths by ${(cents(3 / 2) - FIFTH_QC).toFixed(2)} cents each, and that one is the price.</p>
+<p>That is the ledger's claim restated: equal temperament pays a little on every interval so that nothing is ruinous. Meantone pays nothing on the thirds in the keys near C and everything in the keys far from it. Sources: <a href="https://en.wikipedia.org/wiki/Pythagorean_tuning">Pythagorean tuning</a>, <a href="https://en.wikipedia.org/wiki/Quarter-comma_meantone">Quarter-comma meantone</a>, <a href="https://en.wikipedia.org/wiki/Just_intonation">Just intonation</a> (Wikipedia, CC BY-SA). Every figure here is computed in the build.</p>`;
+  return page('Tunings · The Cent Ledger', 'tunings', body, true);
+};
+
 const play = `// Plays the lower note with the pure and/or tempered upper note. Browser only.
 (function () {
   var ctx;
@@ -121,7 +163,17 @@ const play = `// Plays the lower note with the pure and/or tempered upper note. 
       o.start(t0); o.stop(t0 + dur + 0.05);
     });
   }
-  document.querySelectorAll('.player').forEach(function (p) {
+  document.querySelectorAll('.player.chord').forEach(function (p) {
+    p.querySelectorAll('button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === 'suspended') ctx.resume();
+        var t = ctx.currentTime + 0.05, fs = b.dataset.freqs.split(',').map(Number);
+        fs.forEach(function (f) { tone(f, t, 4, 0.16 / (1 + fs.length)); });
+      });
+    });
+  });
+  document.querySelectorAll('.player:not(.chord)').forEach(function (p) {
     var low = +p.dataset.low, pure = +p.dataset.pure, temp = +p.dataset.temp;
     p.querySelectorAll('button').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -180,13 +232,15 @@ for (const i of intervals) {
   mkdirSync(`public/${i.slug}`, { recursive: true });
   writeFileSync(`public/${i.slug}/index.html`, intervalPage(i));
 }
+mkdirSync('public/tunings', { recursive: true });
+writeFileSync('public/tunings/index.html', tuningsPage());
 writeFileSync('public/style.css', css);
 writeFileSync('public/play.js', play);
 writeFileSync('public/_headers', '/*\n  X-Robots-Tag: noindex\n');
 
 // Checks: every page has noindex and the about link; headers present.
-for (const p of ['public/index.html', ...intervals.map(i => `public/${i.slug}/index.html`)]) {
+for (const p of ['public/index.html', 'public/tunings/index.html', ...intervals.map(i => `public/${i.slug}/index.html`)]) {
   const h = readFileSync(p, 'utf8');
   if (!h.includes('<meta name="robots" content="noindex">') || !h.includes('https://unpromptedworks.com/#about')) throw new Error('rule check failed: ' + p);
 }
-console.log('built', intervals.length + 1, 'pages');
+console.log('built', intervals.length + 2, 'pages');
