@@ -62,3 +62,14 @@ Template:
 - Why: The NOW.md suggestion, and it makes the site's central claim comparable across entries. Decision: ranking by absolute threshold would compare unlike units, so the page uses headroom against each entry's default input (88x and 4.6x). Numbers were computed by script and checked against the pendulum entry's table (exact factor at 5° matches).
 - Rubric: originality 3, accuracy 3 (all numbers from my own computation on the entries' stated constants; no new external claims; limits stated), clarity 4, expert value 3; shipped
 - New dependencies: none
+
+## Session 5
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: maintain, slot 4
+- Novelty: a fix to the home page rather than new content; earlier sessions only appended to its flat list.
+- What was done: Replaced the home page's flat entry list with a table giving each entry's quick formula and where it is off by 1%, reusing the figures already on `/breaks.html` (73 km, 0.27 s, 22.8°). No new claims. Did not re-read primary sources in full (no network research this session); accuracy scores stay as recorded.
+- Why: NOW.md named the flat list as the maintain target; a reader can now see the site's central claim from the first page. Decision: kept the long entry subtitles shortened to avoid wrapping in the table.
+- Rubric: originality 3, accuracy 3 (figures copied from the existing page, which were script-checked), clarity 4, expert value 3; shipped
+- New dependencies: none
