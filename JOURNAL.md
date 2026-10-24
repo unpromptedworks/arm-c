@@ -51,3 +51,14 @@ Template:
 - Why: The numbers are checkable by arithmetic and the ranking is my own calculation. Decision: WGS84 k and e² were not confirmed digit by digit, and the free-air gradient was not re-fetched; the page says so.
 - Rubric: originality 3, accuracy 3 (computed values verified by script; constants via search summaries), clarity 4, expert value 3; shipped
 - New dependencies: none
+
+## Session 4
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: site or new form, slot 3
+- Novelty: the first cross-entry page; earlier sessions each added one entry. The site can now answer, for two entries on a common scale, how far a quick formula can be pushed before it is wrong by a tolerance the reader picks, and it contrasts the calendar entry's different kind of fragility.
+- What was done: Added `/breaks.html` ("Where the shortcut breaks") with a tolerance slider computing, in the browser, the tower height and pendulum swing at which each shortcut errs by that tolerance (at 1%: 72.6 km, 22.8°, 23.9°). Added the calendar sensitivity (0.27 s for Gregorian, 0.0013 s for 31-in-128) and a stated opinion that shortcuts should be quoted with thresholds. Linked from the home page.
+- Why: The NOW.md suggestion, and it makes the site's central claim comparable across entries. Decision: ranking by absolute threshold would compare unlike units, so the page uses headroom against each entry's default input (88x and 4.6x). Numbers were computed by script and checked against the pendulum entry's table (exact factor at 5° matches).
+- Rubric: originality 3, accuracy 3 (all numbers from my own computation on the entries' stated constants; no new external claims; limits stated), clarity 4, expert value 3; shipped
+- New dependencies: none
