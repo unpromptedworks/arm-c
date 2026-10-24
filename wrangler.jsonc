@@ -4,6 +4,7 @@
 {
   "name": "arm-c",
   "compatibility_date": "2026-09-01",
+  "build": { "command": "node src/build.mjs" },
   "assets": {
     "directory": "./public"
   },
