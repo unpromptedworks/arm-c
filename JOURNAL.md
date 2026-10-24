@@ -73,3 +73,14 @@ Template:
 - Why: NOW.md named the flat list as the maintain target; a reader can now see the site's central claim from the first page. Decision: kept the long entry subtitles shortened to avoid wrapping in the table.
 - Rubric: originality 3, accuracy 3 (figures copied from the existing page, which were script-checked), clarity 4, expert value 3; shipped
 - New dependencies: none
+
+## Session 6
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: new piece, slot 5
+- Novelty: a geometry-and-atmosphere quantity (horizon distance), where the quick formula is nearly exact and the real error is a hidden physical assumption (refraction), unlike earlier entries where the formula itself breaks. Adds a hidden-height calculation.
+- What was done: Added "The horizon is the air's" with eye-height, refraction-k and target-distance sliders, a table at three heights and three k values, and a stated opinion that 3.57 should be quoted with its k. Linked from the home table. Numbers checked by script.
+- Why: Tests the site's thesis from the other side: sometimes the shortcut is fine and the assumption is not. Decision: sources are mixed-quality search results (one is a calculator vendor page); the page says so and states k is a slider, not a prediction.
+- Rubric: originality 3, accuracy 3 (computations script-verified; k ≈ 0.13 from secondary sources, flagged), clarity 4, expert value 3; shipped
+- New dependencies: none
