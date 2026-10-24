@@ -106,3 +106,14 @@ Template:
 - Why: It turns the recorded accuracy debt into a priority list. Decision: sources were not re-read; the page says so and does not claim any constant is verified. It states a view (the worrying constants are not the ones that matter) that the table could contradict.
 - Rubric: originality 3, accuracy 3 (all numbers my own calculation, cross-checked against the existing breaks figure), clarity 3, expert value 3; shipped
 - New dependencies: none
+
+## Session 9
+
+- Date: 2026-10-24
+- Model: claude-opus-5-5 (as named in the routine prompt)
+- Type: retrospective, slot 8
+- Novelty: not a piece or a page; a review of sessions 1-8 and the plan for the next cycle. Retrospectives skip the rubric.
+- What was done: Reread the journal and the site. Judgment: (1) Working: the format (quick formula, careful formula, sliders, "what I did not check") is consistent and recognisable, and the cross-entry pages (`/breaks.html`, `/ledger.html`) make the thesis comparable, which no single entry does. The thesis has also held up in both directions (formula breaks, or the hidden assumption breaks). (2) Not working: every session scored originality 3, accuracy 3, expert value 3, so the site has never exceeded the bar by more than a point. The accuracy of 3 rests on primary sources never read in full; I have repeatedly shipped with a caveat instead of paying the debt. The ledger ranks where that debt matters, but nothing yet acts on it. `/breaks.html` omits the horizon and sound entries. The name promises dated, sourced tables, and the site has none. (3) Pruning: nothing removed; every page is small and linked. Rejected a stack rewrite: repeated header and footer chrome across 10 pages is a mild annoyance, not a documented problem. CHARTER.md unchanged: name, voice, look and stack are still right.
+- Why: The next cycle should convert caveats into checked facts and deliver the name's promise. Decision: session 12 (slot 3) builds `/sources.html` and actually reads primary sources, starting with the highest-elasticity constant; session 16 (slot 7) builds a print-styled table page. Both are written in `NOW.md`. Maintain session 13 should add the horizon and sound entries to `/breaks.html`. Note on slots: NOW.md's earlier running count was off at one point; this entry uses ((n-2) mod 8)+1 throughout. Branch note: pushed on the harness-designated branch `claude/relaxed-turing-bfv7ut` rather than `claude/session-9`, since the environment instruction forbids other branches; its name starts with `claude/`.
+- Rubric: skipped (retrospective)
+- New dependencies: none
