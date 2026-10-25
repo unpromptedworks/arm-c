@@ -4,10 +4,82 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Coming soon</title>
+<title>Unreasonable Error — a register of permitted wrongness</title>
+<meta name="description" content="Official numbers are ranges. This site takes one tolerance at a time, from short-filled jars to insect fragments in peanut butter, and works out what the range actually allows.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Unreasonable Error">
+<meta property="og:description" content="A register of permitted wrongness: one official tolerance at a time, worked through.">
+<meta property="og:image" content="https://unreasonable-error.unpromptedworks.com/og.png">
+<meta property="og:url" content="https://unreasonable-error.unpromptedworks.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<p>An AI, Claude, will make this site as part of an experiment. Nothing is here yet.</p>
-<footer><a href="https://unpromptedworks.com/#about">About this experiment</a></footer>
+<main class="sheet">
+  <header class="formhead">
+    <div class="name"><a href="/">Unreasonable Error</a></div>
+    <div class="formno">Form UE-1 · Register of permitted wrongness</div>
+  </header>
+
+  <div class="grid">
+    <section class="box">
+      <span class="no"><b>1</b>Statement</span>
+      <h1>Every official number is a range with a name on it.</h1>
+      <p class="deck">A jar says 454&nbsp;g. A regulator says what &ldquo;454&nbsp;g&rdquo; is allowed to mean. Someone argued over where that edge goes, and the edge is where the rule shows what it really protects. This site takes one tolerance at a time and works it through.</p>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>2</b>Position taken</span>
+      <p class="finding">A tolerance is a decision about whose mistakes to forgive. Read one closely and you can tell who wrote it.</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>3</b>How to read this form</span>
+      <p>Each entry gives the nominal value, what the rule allows, and the document that allows it. Entries marked <b>worked</b> have a page where you can set the variables and run the inspection yourself.</p>
+      <p class="small">Everything runs in your browser. Nothing you enter leaves it.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>4</b>Register</span>
+      <table class="register">
+        <thead>
+          <tr><th>Item</th><th>Nominal</th><th>Allowed</th><th>Authority</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/short-fill/">Short fill</a> <span class="pen small">worked</span><br><span class="small">A packaged food labeled by weight, US</span></td>
+            <td class="num">454 g</td>
+            <td>Any one package up to <span class="mono">19.9 g</span> short. The sample&rsquo;s average may also fall short, by up to <span class="mono">0.635</span> × the sample&rsquo;s standard deviation, and the lot still passes.</td>
+            <td>NIST Handbook 133 (2025), App.&nbsp;A, Tables 2-1 and 2-5 <sup><a href="#s1">1</a></sup></td>
+          </tr>
+          <tr>
+            <td>Insects in peanut butter<br><span class="small">US</span></td>
+            <td class="num">0 fragments</td>
+            <td>FDA action begins at an <em>average</em> of 30 or more insect fragments, or 1 or more rodent hairs, per 100&nbsp;g. The handbook gives the significance of both defects as &ldquo;aesthetic&rdquo;.</td>
+            <td>FDA Food Defect Levels Handbook <sup><a href="#s2">2</a></sup></td>
+          </tr>
+          <tr>
+            <td>Insects in chocolate<br><span class="small">US</span></td>
+            <td class="num">0 fragments</td>
+            <td>Action at an average of 60 or more insect fragments per 100&nbsp;g across six 100-gram subsamples, or 90 or more in any one subsample.</td>
+            <td>FDA Food Defect Levels Handbook <sup><a href="#s2">2</a></sup></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>5</b>Sources</span>
+      <ol class="sources">
+        <li id="s1">National Institute of Standards and Technology, <a href="https://doi.org/10.6028/NIST.HB.133-2025"><i>NIST Handbook 133: Checking the Net Contents of Packaged Goods</i>, 2025 edition</a>. Appendix A, Table 2-1 (Sampling Plans for Category A) and Table 2-5 (Maximum Allowable Variations for Packages Labeled by Weight). A US government work.</li>
+        <li id="s2">US Food and Drug Administration, <a href="https://www.fda.gov/food/current-good-manufacturing-practices-cgmps-food-and-dietary-supplements/food-defect-levels-handbook">Food Defect Levels Handbook</a>, entries for peanut butter and for chocolate and chocolate liquor. The handbook says the levels &ldquo;pose no inherent hazard to health.&rdquo;</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <span>Unreasonable Error · checked against the sources listed</span>
+    <a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site</a>
+  </footer>
+</main>
 </body>
 </html>
