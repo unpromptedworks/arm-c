@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Insects in chocolate — Unreasonable Error</title>
+<meta name="description" content="Make a lot of chocolate with insect fragments in it and put it through the FDA's six-subsample test. Below the limit, patchy contamination is caught more often than heavier, even contamination; above it, patches escape.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Insects in chocolate: the test reads the shape of the mess">
+<meta property="og:description" content="Put a lot of chocolate through the FDA's six-subsample filth test. It judges how the fragments are spread as well as how many there are, and it cuts both ways.">
+<meta property="og:image" content="https://unreasonable-error.unpromptedworks.com/og.png">
+<meta property="og:url" content="https://unreasonable-error.unpromptedworks.com/chocolate/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="sheet">
+  <header class="formhead">
+    <div class="name"><a href="/">Unreasonable Error</a></div>
+    <div class="formno">Entry 002 · Insects in chocolate · FDA CPG 515.700</div>
+  </header>
+
+  <div class="grid">
+    <section class="box">
+      <span class="no"><b>1</b>Item</span>
+      <h1>Insects in chocolate: the test reads the shape of the mess</h1>
+      <p class="deck">The FDA does not act against chocolate for containing insect fragments. It acts when six 100-gram subsamples show too many. You make the lot. Set how many fragments it holds and how evenly they are spread through it, then hand it to the analyst.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>2</b>Finding</span>
+      <p class="finding">Below the limit, the test is harder on patchy chocolate than on dirty chocolate. A lot with 55 fragments in every 100&nbsp;g, spread evenly, draws action about 1 time in 20; a lot averaging 40, but in patches, about 1 time in 4. Above the limit it turns around: a lot averaging 70, spread evenly, is caught almost every time, and the same lot in heavy patches escapes about 1 time in 6.</p>
+      <p class="why">Patchiness is how far the true density of one 100-gram piece typically sits from the lot average. At 60%, a piece from a lot averaging 40 typically holds somewhere from about 16 to 64. At 150%, most pieces are nearly clean and a few are very dirty. &ldquo;Heavy patches&rdquo; above means 150%. The figures come from simulating the test below; box&nbsp;7 shows the rest of the range.</p>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>3</b>Test one: the average</span>
+      <p>The analyst examines six 100-gram subsamples. If they contain <span class="mono">60</span> or more insect fragments per 100&nbsp;g on average, that is, <span class="mono">360</span> or more in all, the chocolate is subject to action.</p>
+      <p class="small">FDA Compliance Policy Guide Sec.&nbsp;515.700, criterion 1a. Fragments are counted by AOAC method 965.38.</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>4</b>Test two: any one piece</span>
+      <p>If any one subsample contains <span class="mono">90</span> or more fragments, the chocolate is subject to action &ldquo;even if the overall average of all the subsamples is less than 60.&rdquo;</p>
+      <p class="small">Criterion 1b. Six pieces get six chances to cross it. A lot that is the same throughout almost never does: at 55 per 100&nbsp;g, a count of 90 is nearly five standard deviations of chance away.</p>
+    </section>
+
+    <section class="box third">
+      <span class="no"><b>5</b>Your lot</span>
+      <div class="controls">
+        <div class="control">
+          <label for="m"><span>Fragments per 100&nbsp;g, lot average</span><output id="mOut" for="m">40</output></label>
+          <input id="m" type="range" min="0" max="80" step="1" value="40">
+        </div>
+        <div class="control">
+          <label for="cv"><span>Patchiness (variation in density, piece to piece)</span><output id="cvOut" for="cv">60%</output></label>
+          <input id="cv" type="range" min="0" max="1.5" step="0.1" value="0.6">
+        </div>
+        <div class="buttons">
+          <button id="one" type="button">Take 6 subsamples</button>
+          <button id="many" type="button">Inspect 1,000 lots</button>
+        </div>
+        <p class="small" id="manyOut" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="box twothirds">
+      <span class="no"><b>6</b>Six subsamples of 100&nbsp;g</span>
+      <svg id="pieces" viewBox="0 0 600 120" role="img" aria-label="Six squares of chocolate, each dotted with the insect fragments found in it"></svg>
+      <svg id="strip" viewBox="0 -16 600 120" role="img" aria-label="Fragment count of each subsample on a scale from 0 to 150, with the average-60 and single-90 limits marked"></svg>
+      <div class="fields">
+        <div class="field"><span class="k">Total fragments, 600&nbsp;g</span><span class="v" id="fTot">—</span></div>
+        <div class="field"><span class="k">1a · Average per 100&nbsp;g</span><span class="v" id="fAvg">—</span></div>
+        <div class="field"><span class="k">1b · Highest subsample</span><span class="v" id="fMax">—</span></div>
+      </div>
+      <p style="margin-top:14px"><span class="stamp idle" id="stamp">Not examined</span> <span class="small" id="reason"></span></p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>7</b>Map of actioned lots</span>
+      <h2>Chance a lot draws action, by average and patchiness</h2>
+      <svg id="map" class="tight" viewBox="0 0 700 316" role="img" aria-label="Heat map: chance of action by average fragments per 100 grams (x axis, 0 to 80) and patchiness (y axis, 0 to 150 percent)"></svg>
+      <p class="why">Each cell is 300 simulated examinations of six subsamples, run in your browser when the page loads. The stronger the red, the likelier the action. The ring is your lot. Along the bottom row, the evenly mixed lots, action arrives only near 60, and steeply. Higher up, it arrives early and partly, from criterion 1b, long before the average is anywhere near the limit. Right of the limit the order reverses: the even lots are caught every time, and the patchy ones sometimes escape, because all six pieces can come from the cleaner parts of the lot.</p>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>8</b>Whom it forgives</span>
+      <p>The second test is there for a reason: a lot can be clean on average and still hold a piece that is not, and an average alone would never find it. But six pieces are a small look at a large lot, and the result is a rule that reads the shape of the contamination as well as its amount.</p>
+      <p>Below the limit it forgives the even lot: fragments spread thinly through every bar pass up to 60, while fragments that sit together are caught well below it. Above the limit it forgives the patchy lot, which can hide its dirty parts from six pieces; an even lot over the limit has nowhere to hide. Mixing the lot more thoroughly helps a maker who is under the limit and hurts one who is over it. The FDA closes one route: food at or above an action level may not be blended with another lot to bring it down, and doing so &ldquo;renders the final food unlawful regardless of the defect level of the finished food.&rdquo;</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>9</b>Note on rodent hairs</span>
+      <p>The same guide sets limits for rodent hairs, and the FDA&rsquo;s two documents word them differently. The Compliance Policy Guide acts on an average of <b>more than</b> 1.0 hair per 100&nbsp;g, or any subsample with <b>more than</b> 3. The Food Defect Levels Handbook says &ldquo;1 or more&rdquo; and &ldquo;3 or more.&rdquo;</p>
+      <p>Six hairs across the six subsamples, an average of exactly 1.0, is actionable under the handbook and not under the guide. So is a single subsample with exactly 3. The insect limits, 60 and 90, read &ldquo;or more&rdquo; in both.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>10</b>Not modeled</span>
+      <p class="small">How the six subsamples are drawn from a shipment; the recovery rate of the counting method; rodent hairs and cocoa shell, which have their own limits; and the FDA&rsquo;s statement that poor manufacturing practice may draw action &ldquo;without regard to the action level.&rdquo; The simulation treats each 100-gram subsample as drawn from its own patch of the lot, whose true density is spread around the lot average with the patchiness you set (a gamma distribution), and counts fragments in it as a Poisson count. This is the usual model for clumped counts, not one taken from FDA data, which this page does not have.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>11</b>Sources</span>
+      <ol class="sources">
+        <li>US Food and Drug Administration, <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cpg-sec-515700-chocolate-chocolate-liquor-adulteration-insect-and-rodent-filth">Compliance Policy Guide Sec.&nbsp;515.700, Chocolate and Chocolate Liquor &mdash; Adulteration with Insect and Rodent Filth</a>. Issued 5/1/85, revised 3/95, 8/96 and 8/2000. Regulatory action guidance, criteria 1 and 2. A US government work.</li>
+        <li>US Food and Drug Administration, <a href="https://www.fda.gov/food/current-good-manufacturing-practices-cgmps-food-and-dietary-supplements/food-defect-levels-handbook">Food Defect Levels Handbook</a>. Introduction (no inherent hazard; blending; enforcement without regard to the action level) and the entry for chocolate and chocolate liquor, whose significance is given as &ldquo;Aesthetic.&rdquo; A US government work.</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <a href="/">← Register</a>
+    <a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site</a>
+  </footer>
+</main>
+<script src="sim.js"></script>
+</body>
+</html>

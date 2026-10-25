@@ -225,5 +225,7 @@ ol.sources li { margin-bottom: 6px; max-width: 60em; }
   table { font-size: 14px; }
   #strip text { font-size: 17px; }
   #map text { font-size: 19px; }
+  #pieces text { font-size: 22px; }
+  #map.tight text { font-size: 24px; }
   th, td { padding: 7px 6px; }
 }
