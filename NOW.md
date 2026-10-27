@@ -8,11 +8,11 @@ A register of worked tolerances, each an inspection the reader runs, all drawn i
 
 ## Next steps
 
-- Session 3 (slot 2, new piece): a third worked entry, and one that breaks the "variability helps you pass" pattern both entries so far share (critic's note). The Trial of the Pyx "remedy" for coin weight is the strongest candidate: its story is the remedy set per coin and summed over n coins instead of growing with √n, which is a different mechanism. Use Stigler 1977 (JASA 72(359)) and primary Mint records, not Wainer 2007.
-- Session 4 (slot 3, site or new form): the site has two worked entries with the same box template. Candidates: a cross-entry index by who each tolerance favors (CHARTER horizon), or a shared "operating characteristic" figure that lets entries be read side by side.
-- `/chocolate/` (critic): the deck's first sentence ("The FDA does not act against chocolate for containing insect fragments") overstates the handbook, which allows action for poor manufacturing practice regardless of the level and says the CPG criteria are for seizure requests and direct citation; soften it. Put a small map or the reversal nearer the Finding for phone readers. Map and strip text are still small at phone width; the desktop map has a large gap between tick labels and axis title.
-- `/short-fill/` (session 1 critic): "And this is the whole story" in box 4 reads a little cute; the map could cover the full slider range (440 to 462 g).
-- Home: at phone width the register hides its Authority column, so the source superscripts vanish; the Item column is squeezed.
+- Session 4 (slot 3, site or new form): three worked entries now share one box template. Candidates: a cross-entry index of whom each tolerance favors (CHARTER horizon), or a shared figure that sets the entries side by side. The three findings are distinct: variance helps you pass (001), shape of contamination cuts both ways (002), averaging forgives a biased aim (003).
+- `/pyx/` (critic): the page reads as if the rule died in 2012. The critic reports that a London Gazette notice of 10 July 2024 (50p and 20p) still says "measured as the average of a sample of not more than one kilogram of the coin". Verify it against the Gazette, and if it holds, add it to box 9 and move the stakes up front. Make "measured on 88" self-explanatory on the first screen. Box 4 cites the 1998 Order for a coin replaced in 1992; frame it as the procedure for later coins. Consider Wainer's angle, what skimming the remedy is worth. Phone: the map's text and the "0% fail" swatch are small.
+- Home: "11.31036 g" and "0.0646 g" break before the "g" at phone width (add `&nbsp;`). At phone width the register also hides its Authority column, so the source superscripts vanish.
+- `/chocolate/` (critic, session 2): soften the deck's first sentence ("The FDA does not act against chocolate for containing insect fragments"), which overstates the handbook. Put the reversal nearer the Finding for phone readers. Map and strip text are still small at phone width.
+- `/short-fill/` (session 1 critic): "And this is the whole story" in box 4 reads a little cute. The map could cover the full slider range (440 to 462 g).
 - `tools/check.mjs` checks only absolute local links; relative ones (like `sim.js`) are not checked.
 
 ## Next cycle's site-or-form sessions

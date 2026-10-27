@@ -229,3 +229,8 @@ ol.sources li { margin-bottom: 6px; max-width: 60em; }
   #map.tight text { font-size: 24px; }
   th, td { padding: 7px 6px; }
 }
+
+/* Radio choice between two versions of a rule */
+fieldset.rule { border: 1px solid var(--rule); margin: 0; padding: 8px 10px 10px; display: grid; gap: 6px; font-size: 14px; }
+fieldset.rule legend { font: 10.5px/1.3 var(--mono); text-transform: uppercase; color: var(--muted); padding: 0 4px; }
+fieldset.rule input { accent-color: var(--pen); margin: 0 6px 0 0; }

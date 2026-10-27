@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The coin remedy — Unreasonable Error</title>
+<meta name="description" content="The Coinage Act 1971 allowed each ten-pence coin a remedy of 0.0646 g, then measured it on the average of a kilogram of coins. Strike a lot yourself and see what that average forgives.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The coin remedy: an allowance for each coin, measured on 88">
+<meta property="og:description" content="Strike ten-pence coins and send a kilogram of them to the Trial of the Pyx. The Act's remedy was written for each coin and tested on the average, so it forgives the Mint's aim rather than its press.">
+<meta property="og:image" content="https://unreasonable-error.unpromptedworks.com/og.png">
+<meta property="og:url" content="https://unreasonable-error.unpromptedworks.com/pyx/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="sheet">
+  <header class="formhead">
+    <div class="name"><a href="/">Unreasonable Error</a></div>
+    <div class="formno">Entry 003 · The coin remedy · Coinage Act 1971, s.&nbsp;1(3)</div>
+  </header>
+
+  <div class="grid">
+    <section class="box">
+      <span class="no"><b>1</b>Item</span>
+      <h1>The coin remedy: an allowance for each coin, measured on 88</h1>
+      <p class="deck">The Coinage Act 1971 set the ten new pence at 11.31036&nbsp;g and allowed a remedy, a variation from that weight, of 0.0646&nbsp;g. Then it said how to measure the variation: &ldquo;as the average of a sample of not more than one kilogram of that coin.&rdquo; You run the press. Set where you aim it and how much it scatters, and send a kilogram to the jury.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>2</b>Finding</span>
+      <p class="finding">Measured on an average, the remedy stops forgiving the press and starts forgiving the aim. Strike every coin 55&nbsp;mg light on a press that scatters 25&nbsp;mg, and a kilogram of them passes about 9,998 times in 10,000, though 35% of the coins are each outside the remedy. Aimed at the standard, the same press puts 1% outside.</p>
+      <p class="why">Scatter is the standard deviation of single coins about the press&rsquo;s aim. A kilogram of ten-pence coins is 88 of them (995.3&nbsp;g; an 89th would pass 1,000). Averaging 88 coins shrinks the press&rsquo;s scatter to about a ninth (1/&radic;88), but the remedy stays the size of one coin&rsquo;s, so nearly all of it is left over for a light aim. Box&nbsp;7 shows the whole range; box&nbsp;5 offers the test with the remedy scaled to the average.</p>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>3</b>The allowance</span>
+      <p>&ldquo;In the making of the coins a remedy (that is, a variation from the standard weight, diameter or, in the case of cupro-nickel coins, composition so specified) shall be allowed of an amount not exceeding that specified&rdquo;: for the ten new pence, <span class="mono">0.0646&nbsp;g</span>, about 0.57% of the coin.</p>
+      <p class="small">Coinage Act 1971, s.&nbsp;1(3) and Sch.&nbsp;1, Part&nbsp;II, as enacted.</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>4</b>The measurement</span>
+      <p>&ldquo;&hellip;and the variation from the standard weight of any coin shall be measured as the average of a sample of not more than one kilogram of that coin.&rdquo; At the Trial of the Pyx the jury makes up lots &ldquo;weighing not less than 980 grams nor more than one kilogram each&rdquo; and weighs each lot in bulk.</p>
+      <p class="small">Same section, as enacted; Trial of the Pyx Order 1998, art.art.&nbsp;9(2), applied to cupro-nickel coins by art.&nbsp;11.nbsp;9(2), and art.art.&nbsp;9(2), applied to cupro-nickel coins by art.&nbsp;11.nbsp;11(2), which sets the same rule for cupro-nickel coins.</p>
+    </section>
+
+    <section class="box third">
+      <span class="no"><b>5</b>Your press</span>
+      <div class="controls">
+        <div class="control">
+          <label for="aim"><span>Aim, against the standard weight</span><output id="aimOut" for="aim">−55 mg</output></label>
+          <input id="aim" type="range" min="-100" max="40" step="5" value="-55">
+        </div>
+        <div class="control">
+          <label for="sd"><span>Scatter, coin to coin (standard deviation)</span><output id="sdOut" for="sd">25 mg</output></label>
+          <input id="sd" type="range" min="5" max="60" step="5" value="25">
+        </div>
+        <div class="control">
+          <label for="n"><span>Coins weighed together</span><output id="nOut" for="n">88</output></label>
+          <input id="n" type="range" min="1" max="88" step="1" value="88">
+        </div>
+        <fieldset class="rule">
+          <legend>Remedy on the average</legend>
+          <label><input type="radio" name="rule" value="act" checked> As enacted: 64.6&nbsp;mg</label>
+          <label><input type="radio" name="rule" value="root"> Scaled: 64.6&nbsp;mg ÷ &radic;<span id="nRoot">88</span> = <span id="scaled">6.9</span>&nbsp;mg</label>
+        </fieldset>
+        <div class="buttons">
+          <button id="one" type="button">Strike a lot</button>
+          <button id="many" type="button">Try 1,000 lots</button>
+        </div>
+        <p class="small" id="manyOut" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="box twothirds">
+      <span class="no"><b>6</b>The lot, coin by coin</span>
+      <svg id="strip" viewBox="0 0 600 200" role="img" aria-label="Each coin's variation from the standard weight, in milligrams, from minus 150 to plus 100, with the per-coin remedy band and the lot's average marked"></svg>
+      <div class="fields">
+        <div class="field"><span class="k">Lot weight</span><span class="v" id="fW">—</span></div>
+        <div class="field"><span class="k">Average variation</span><span class="v" id="fAvg">—</span></div>
+        <div class="field"><span class="k">Coins outside remedy</span><span class="v" id="fOut">—</span></div>
+      </div>
+      <p style="margin-top:14px"><span class="stamp idle" id="stamp">Not tried</span> <span class="small" id="reason"></span></p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>7</b>Map of passing lots</span>
+      <h2>Chance a lot fails, by aim and scatter</h2>
+      <svg id="map" class="tight" viewBox="0 0 620 360" role="img" aria-label="Heat map: chance the lot fails the bulk test, by the press's aim (x axis, minus 100 to plus 40 milligrams) and scatter (y axis, 5 to 60 milligrams), with a curve where one coin in ten is outside the remedy"></svg>
+      <p class="why" id="mapWhy">Each cell is the exact chance that the average of your number of coins falls outside the remedy you chose. The stronger the red, the likelier the lot fails. The ring is your press. The blue curve encloses the presses that keep nine coins in ten inside the remedy; everything pale outside it is a press that the Act&rsquo;s average forgives and its own coins do not. As enacted, the red edge stands almost straight at &minus;64.6&nbsp;mg whatever the scatter: the test reads the aim and almost nothing else. Switch to the scaled remedy and the pale region shrinks to presses aimed close to the standard.</p>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>8</b>Whom it forgives</span>
+      <p>No press strikes two blanks to the same milligram, and a per-coin remedy is the natural way to forgive that. Measured on an average, it forgives something else. The scatter of single coins mostly cancels across 88 of them; the remedy does not shrink with it. What remains is room for the Mint to aim below the standard, by nearly the whole remedy, and still pass every trial.</p>
+      <p>The rule is old. The Mint&rsquo;s indenture of 1702, read at the trial of 1716, allowed &ldquo;for Gold 40 graines upon the Pound Weight&rdquo;: an allowance that grows in step with the weight tried, while chance error grows only as its square root. Stigler (1977) traced the same arithmetic back through eight centuries of trials. The 1971 Act wrote it into a statute in grams.</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>9</b>When the sentence changed</span>
+      <p>Parliament amended this measurement in the Coinage (Measurement) Act 2011. The reason given was the London Olympic coins of a kilogram or more: the variation could not be measured on a sample of not more than one kilogram &ldquo;because the weight of each coin is likely to be equal to or greater than the one kilogram aggregate limit.&rdquo; Since 31 January 2012 the measurement is whatever a royal proclamation says.</p>
+      <p>The jury of 2013 still made up its cupro-nickel lots &ldquo;as close as possible to one kilogram but not more than one kilogram&rdquo; and found each &ldquo;on the whole within the permitted variation&rdquo;. Its lots came out both heavy and light: three of twenty pence at &minus;0.04, &minus;0.20 and &minus;1.77&nbsp;g per lot; two of fifty pence at +0.29 and +0.69&nbsp;g. Nothing here says the Royal Mint aims light. It says the test would not notice much if it did.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>10</b>Not modeled</span>
+      <p class="small">Diameter and composition, which have their own remedies; how coins are set apart for the Pyx (one in 5,000 or 20,000 under the 1998 Order, depending on the coin); the jury&rsquo;s weighing of the residue and of individual coins; and the remedies set by proclamation since the Currency Act 1983, which this page does not have. The simulation draws each coin&rsquo;s variation from a normal distribution around your aim with your scatter, and applies the bulk test to the average of the coins weighed together. Real presses are not normal and drift over a run; the point of the page survives either. The 0.0646&nbsp;g remedy is for the ten new pence of 1971, a coin replaced by a smaller one in 1992.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>11</b>Sources</span>
+      <ol class="sources">
+        <li><a href="https://www.legislation.gov.uk/ukpga/1971/24/section/1/enacted">Coinage Act 1971, section 1</a> and <a href="https://www.legislation.gov.uk/ukpga/1971/24/schedule/1/enacted">Schedule 1</a>, as enacted. Contains public sector information licensed under the Open Government Licence v3.0.</li>
+        <li><a href="https://www.legislation.gov.uk/uksi/1998/1764/made">The Trial of the Pyx Order 1998</a> (SI 1998/1764), articles 3, 9 and 11. Open Government Licence v3.0.</li>
+        <li><a href="https://www.legislation.gov.uk/ukpga/2011/17/notes/contents">Coinage (Measurement) Act 2011, Explanatory Notes</a>, paragraphs 4 to 7. Open Government Licence v3.0.</li>
+        <li>HM Treasury, <a href="https://assets.publishing.service.gov.uk/media/5a7cc471ed915d63cc65cba9/trial_of_pyx_verdict_2013.pdf">Trial of the Pyx 2013: Verdict of the Jury</a>, dated 3 May 2013, section 8. Open Government Licence v3.0.</li>
+        <li>Newton and the Mint, University of Oxford, <a href="https://hf-web-mint2.history.ox.ac.uk/transcriptions/diplomatic/MINT00185">&ldquo;Result of pyx trial held 29 August 1716: coins found satisfactory&rdquo;</a>, transcription of The National Archives, MINT 19/1/299-301. Short quotation.</li>
+        <li>Stephen M. Stigler, &ldquo;Eight Centuries of Sampling Inspection: The Trial of the Pyx,&rdquo; <i>Journal of the American Statistical Association</i> 72, no.&nbsp;359 (1977): 493&ndash;500.</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <a href="/">← Register</a>
+    <a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site</a>
+  </footer>
+</main>
+<script src="sim.js"></script>
+</body>
+</html>
