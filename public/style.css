@@ -220,7 +220,7 @@ ol.sources li { margin-bottom: 6px; max-width: 60em; }
   .formhead .formno { border-left: 0; border-top: 1px solid var(--rule); white-space: normal; }
   .deck { font-size: 18px; }
   .finding { font-size: 19px; }
-  .register th:nth-child(4), .register td:nth-child(4) { display: none; }
+  .register:not(.ledger) th:nth-child(4), .register:not(.ledger) td:nth-child(4) { display: none; }
   .register td.num { white-space: normal; }
   table { font-size: 14px; }
   #strip text { font-size: 17px; }
@@ -234,3 +234,14 @@ ol.sources li { margin-bottom: 6px; max-width: 60em; }
 fieldset.rule { border: 1px solid var(--rule); margin: 0; padding: 8px 10px 10px; display: grid; gap: 6px; font-size: 14px; }
 fieldset.rule legend { font: 10.5px/1.3 var(--mono); text-transform: uppercase; color: var(--muted); padding: 0 4px; }
 fieldset.rule input { accent-color: var(--pen); margin: 0 6px 0 0; }
+
+/* Side-by-side curves (Form UE-2): a control and two readouts under each curve */
+.rowctl { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0 14px; align-items: end; margin-top: 6px; }
+.rowctl .field { border: 1px solid var(--rule); }
+h2.next { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--hair); }
+@media (max-width: 720px) {
+  .rowctl { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rowctl .control { grid-column: span 2; }
+  #sfSvg text, #chSvg text, #pxSvg text { font-size: 17px; }
+  .ledger th:nth-child(2), .ledger td:nth-child(2) { display: none; }
+}

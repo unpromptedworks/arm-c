@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>On the line: three rules side by side — Unreasonable Error</title>
+<meta name="description" content="Put a lot exactly on the line each of three official tolerances draws, and see how often each inspection passes it. A US jar line passes 39 times in 40; a coin press passes 1 time in 2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="On the line: who gets the benefit of the doubt?">
+<meta property="og:description" content="Three official tolerances side by side: how often each inspection passes a lot that sits exactly on the rule's line, and how far past it a lot must go to be caught.">
+<meta property="og:image" content="https://unreasonable-error.unpromptedworks.com/og.png">
+<meta property="og:url" content="https://unreasonable-error.unpromptedworks.com/on-the-line/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="sheet">
+  <header class="formhead">
+    <div class="name"><a href="/">Unreasonable Error</a></div>
+    <div class="formno">Form UE-2 · Side by side · Entries 001–003</div>
+  </header>
+
+  <div class="grid">
+    <section class="box">
+      <span class="no"><b>1</b>Item</span>
+      <h1>On the line: who gets the benefit of the doubt?</h1>
+      <p class="deck">Each worked entry on this site is a rule that draws a line and an inspection that checks a sample against it. Here the three inspections face the same test: a lot that sits exactly on its rule&rsquo;s line, and then lots a little past it. How often does each one pass?</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>2</b>Finding</span>
+      <p class="finding">On the line, the three inspections split the doubt three ways. A jar line that averages exactly 454&nbsp;g passes 39 times in 40, however steady it is. A coin press aimed exactly at the edge of the remedy passes 1 time in 2. A chocolate lot at exactly 60 fragments per 100&nbsp;g escapes 1 time in 2 if the fragments are spread evenly, and only 1 time in 4 or 5 if they come in patches.</p>
+      <p class="why">The US packer gets the benefit of the doubt, by design. The Mint gets none from its inspection: what the coin rule forgives, it forgives in the wording of the law (box&nbsp;7). The chocolate maker gets less of it once the lot is patchy.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>3</b>The line each rule draws</span>
+      <table class="register">
+        <thead>
+          <tr><th>Entry</th><th>The line</th><th>Which side is the line on</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/short-fill/">001 Short fill</a><br><span class="small">NIST Handbook 133</span></td>
+            <td>The average of a lot of 454-gram jars &ldquo;must at least equal&rdquo; 454&nbsp;g.</td>
+            <td>Exactly 454&nbsp;g complies. Any less does not.</td>
+          </tr>
+          <tr>
+            <td><a href="/chocolate/">002 Insects in chocolate</a><br><span class="small">FDA CPG Sec.&nbsp;515.700</span></td>
+            <td>Action when the six subsamples average 60 or more insect fragments per 100&nbsp;g (or any one has 90 or more).</td>
+            <td>A lot whose true average is 60 is on the action side.</td>
+          </tr>
+          <tr>
+            <td><a href="/pyx/">003 Coin weight</a><br><span class="small">Coinage Act 1971</span></td>
+            <td>A remedy of 64.6&nbsp;mg from the standard weight of the ten new pence, measured on the average of not more than a kilogram of coins (88).</td>
+            <td>A press aimed 64.6&nbsp;mg light is on the edge of what the remedy allows.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:10px">Each rule&rsquo;s line is in its own units, so the curves below share a position, not a scale: the red line sits at the same place on all three, and everything to its right is past it.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>4</b>Chance of passing, around the line</span>
+      <h2>001 Short fill · lot average, grams</h2>
+      <svg id="sfSvg" viewBox="0 0 640 196" role="img" aria-label="Curve: chance a lot of jars passes, by its true average from 458 to 444 grams, with the line at 454 grams"></svg>
+      <div class="rowctl">
+        <div class="control">
+          <label for="sfV"><span>Machine spread (standard deviation)</span><output id="sfVOut" for="sfV">4.0 g</output></label>
+          <input id="sfV" type="range" min="0.5" max="10" step="0.5" value="4">
+        </div>
+        <div class="field"><span class="k">Passes on the line</span><span class="v" id="sfAt">—</span></div>
+        <div class="field"><span class="k">Caught 9 times in 10 at</span><span class="v" id="sfCatch">—</span></div>
+      </div>
+
+      <h2 class="next">002 Insects in chocolate · lot average, fragments per 100 g</h2>
+      <svg id="chSvg" viewBox="0 0 640 196" role="img" aria-label="Curve: chance a chocolate lot escapes action, by its true average from 42 to 102 fragments per 100 grams, with the line at 60"></svg>
+      <div class="rowctl">
+        <div class="control">
+          <label for="chV"><span>Patchiness (variation in local density)</span><output id="chVOut" for="chV">60%</output></label>
+          <input id="chV" type="range" min="0" max="1.5" step="0.1" value="0.6">
+        </div>
+        <div class="field"><span class="k">Escapes on the line</span><span class="v" id="chAt">—</span></div>
+        <div class="field"><span class="k">Caught 9 times in 10 at</span><span class="v" id="chCatch">—</span></div>
+      </div>
+
+      <h2 class="next">003 Coin weight · press aim, mg from the standard</h2>
+      <svg id="pxSvg" viewBox="0 0 640 196" role="img" aria-label="Curve: chance a kilogram of coins passes, by the press's aim from 58.6 to 78.6 milligrams light, with the line at the remedy, 64.6 milligrams"></svg>
+      <div class="rowctl">
+        <div class="control">
+          <label for="pxV"><span>Press scatter (standard deviation of one coin)</span><output id="pxVOut" for="pxV">25 mg</output></label>
+          <input id="pxV" type="range" min="5" max="60" step="5" value="25">
+        </div>
+        <div class="field"><span class="k">Passes on the line</span><span class="v" id="pxAt">—</span></div>
+        <div class="field"><span class="k">Caught 9 times in 10 at</span><span class="v" id="pxCatch">—</span></div>
+      </div>
+      <p class="why" style="margin-top:14px">Blue: the chance the inspection passes the lot, at each true value. Ring: a lot exactly on the line. Dashed blue: where the chance of passing falls to 1 in 10, which is where a lot is caught 9 times in 10. The shaded side is past the line. Each slider is the second variable from that entry&rsquo;s page; the curves are recomputed in your browser from 4,000 simulated inspections per point (the coin curve is exact).</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>5</b>Ledger at your settings</span>
+      <table class="register ledger">
+        <thead>
+          <tr><th>Entry</th><th>Whose error</th><th>Setting</th><th>Passes on the line</th><th>Caught 9 in 10 at</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>001 Short fill</td><td>The packer&rsquo;s underfill</td><td class="num pen">spread <span id="tsfV">—</span></td><td class="num pen" id="tsfAt">—</td><td class="num pen" id="tsfCatch">—</td></tr>
+          <tr><td>002 Chocolate</td><td>The maker&rsquo;s filth</td><td class="num pen">patchiness <span id="tchV">—</span></td><td class="num pen" id="tchAt">—</td><td class="num pen" id="tchCatch">—</td></tr>
+          <tr><td>003 Coin weight</td><td>The Mint&rsquo;s light aim</td><td class="num pen">scatter <span id="tpxV">—</span></td><td class="num pen" id="tpxAt">—</td><td class="num pen" id="tpxCatch">—</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>6</b>Why the jar line passes 39 times in 40</span>
+      <p>The handbook lets the sample average fall short by 0.635 times the sample&rsquo;s standard deviation. For a lot whose true average is exactly 454&nbsp;g, the sample&rsquo;s shortfall divided by its standard error follows Student&rsquo;s <i>t</i> with 11 degrees of freedom, and 0.635 × √12 = 2.20 is that distribution&rsquo;s 97.5th percentile. So the lot passes the average test 97.5% of the time at any spread. Only when the spread is wide enough for single jars to fall 19.9&nbsp;g short (about 7&nbsp;g and up) does the rate drop.</p>
+      <p>The handbook says the margin gives the packer &ldquo;an approximately 95&nbsp;% level of confidence&rdquo;; as <a href="/short-fill/">Entry 001</a> notes, the table prints the 97.5th-percentile factor. Either way it is a deliberate gift to the packer, sized to the sample.</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>7</b>Why the others get a coin toss</span>
+      <p><b>Coins.</b> The Act gives the jury a line and no margin: the kilogram is weighed and its average is inside 64.6&nbsp;mg or not. A press aimed exactly at the edge lands either side of it equally often. The forgiving in this rule happens earlier, in its wording: by measuring a per-coin remedy on an average of 88, it lets the aim drift almost the whole remedy before the line is reached (<a href="/pyx/">Entry 003</a>).</p>
+      <p><b>Chocolate.</b> The action level is a plain average with no margin either way, so an even lot at 60 is caught half the time. The second clause, 90 in any one subsample, is what moves it: the patchier the lot, the likelier one subsample crosses 90, and the more often a lot on the line is caught. Further past the line, patchiness turns the other way and lets lots escape (<a href="/chocolate/">Entry 002</a>).</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>8</b>What this does to the site&rsquo;s position</span>
+      <p>The register&rsquo;s position is that a tolerance is a decision about whose mistakes to forgive. Side by side, the three rules show that the decision can sit in different places. In the jar rule it sits in the inspection, which leans to the packer in plain sight. In the coin rule the inspection is even-handed and the lean is in the definition. In the chocolate rule neither leans by design; the shape of the contamination decides. Reading only the inspection would have got the coin rule wrong.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>9</b>Not modeled</span>
+      <p class="small">The models are those of the entry pages, with the same assumptions: normal fills and coin weights, gamma-distributed local insect density with Poisson counts. The jar curve is for a lot of 12 to 250 packages (sample of 12); the coin curve is for the light side, and the heavy side is its mirror. The chocolate line is an action level, a point at which the FDA may act, not a guarantee that it will. Curves are forced to fall as the lot moves past the line, which removes simulation noise and nothing else.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>10</b>Sources</span>
+      <ol class="sources">
+        <li>National Institute of Standards and Technology, <a href="https://doi.org/10.6028/NIST.HB.133-2025"><i>NIST Handbook 133</i>, 2025 edition</a>, Section 1.2 and Appendix A, Tables 2-1 and 2-5. A US government work.</li>
+        <li>US Food and Drug Administration, <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cpg-sec-515700-chocolate-chocolate-liquor-adulteration-insect-and-rodent-filth">Compliance Policy Guide Sec.&nbsp;515.700</a>, criterion 1. A US government work.</li>
+        <li><a href="https://www.legislation.gov.uk/ukpga/1971/24/section/1/enacted">Coinage Act 1971, section 1</a> and Schedule 1, as enacted. Contains public sector information licensed under the Open Government Licence v3.0.</li>
+        <li>The <i>t</i> percentile (11 degrees of freedom, 97.5th: 2.201) is a standard value. Curves of this kind are called operating characteristic curves in acceptance sampling.</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <a href="/">← Register</a>
+    <a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site</a>
+  </footer>
+</main>
+<script src="sim.js"></script>
+</body>
+</html>
