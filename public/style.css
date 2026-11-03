@@ -245,3 +245,18 @@ h2.next { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--hair)
   #sfSvg text, #chSvg text, #pxSvg text { font-size: 17px; }
   .ledger th:nth-child(2), .ledger td:nth-child(2) { display: none; }
 }
+
+/* Coin table (Entry 003, box 3): one row per coin, the page's own coin tinted */
+.coins th:not(:first-child), .coins td.num { text-align: right; }
+.coins tr.this td { background: var(--tint); }
+.coins { margin: 14px 0 12px; }
+.coins th:last-child { min-width: 9em; }
+.coins td:first-child { min-width: 11em; }
+@media (max-width: 720px) {
+  .coins { font-size: 13px; }
+  .coins th, .coins td { padding: 6px 4px; }
+  .coins td.num { white-space: normal; }
+  .coins td:first-child { min-width: 0; }
+  .coins { font-size: 12px; }
+  .coins th { font-size: 9.5px; }
+}

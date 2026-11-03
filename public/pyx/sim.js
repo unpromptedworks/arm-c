@@ -214,8 +214,8 @@ function drawMap() {
   // Legend in two rows under the axis title, so it fits at phone width.
   const ly = T + H + 70;
   [0, 0.5, 1].forEach((p, k) => {
-    svg.append(el("rect", { x: L + k * 150, y: ly, width: 14, height: 14, fill: c.stamp, "fill-opacity": shade(p) }));
-    svg.append(el("text", { x: L + k * 150 + 20, y: ly + 12 }, Math.round(p * 100) + "% fail"));
+    svg.append(el("rect", { x: L + k * 160, y: ly - 4, width: 20, height: 20, fill: c.stamp, "fill-opacity": shade(p), stroke: c.hair }));
+    svg.append(el("text", { x: L + k * 160 + 26, y: ly + 12 }, Math.round(p * 100) + "% fail"));
   });
   svg.append(el("line", { x1: L, x2: L + 14, y1: ly + 37, y2: ly + 37, stroke: c.pen, "stroke-width": 2.5 }));
   svg.append(el("text", { x: L + 20, y: ly + 42 }, "9 coins in 10 inside the remedy"));
