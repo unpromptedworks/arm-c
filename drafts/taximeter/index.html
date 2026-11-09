@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The lopsided meter — Unreasonable Error</title>
+<meta name="description" content="NIST Handbook 44 lets a taximeter overcharge for distance by 1% and undercharge by 4%. Calibrate a fleet of meters and see who pays for the scatter between them.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The lopsided meter: a taximeter may read 1% long or 4% short">
+<meta property="og:description" content="Handbook 44 gives a taximeter a window that leans toward the passenger. Set a fleet's meters and see how far below true distance the window pushes them.">
+<meta property="og:image" content="https://unreasonable-error.unpromptedworks.com/og.png">
+<meta property="og:url" content="https://unreasonable-error.unpromptedworks.com/taximeter/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="sheet">
+  <header class="formhead">
+    <div class="name"><a href="/">Unreasonable Error</a></div>
+    <div class="formno">Entry 004 · The lopsided meter · NIST HB&nbsp;44, §&nbsp;5.54, T.1</div>
+  </header>
+
+  <div class="grid">
+    <section class="box">
+      <span class="no"><b>1</b>Item</span>
+      <h1>The lopsided meter: a taximeter may read 1% long or 4% short</h1>
+      <p class="deck">NIST Handbook&nbsp;44, the code US weights-and-measures inspectors test taximeters against, lets a meter register up to 1% more distance than the cab drove, or up to 4% less. You set the meters for a fleet of cabs: choose their aim and their scatter, and drive them over the inspector&rsquo;s measured mile.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>2</b>Finding</span>
+      <p class="finding">This window leans toward the passenger, and the scatter between meters is charged to the cab. If a fleet&rsquo;s meters scatter 1% from cab to cab, the fleet must set them 1.3% slow for 99 in 100 to pass. Its passengers then pay for 1.3% less distance than they ride, on average. Centre a window of the same width on true distance, &plusmn;3.45%, and the same fleet could set its meters 1.1% fast.</p>
+      <p class="why">Scatter is the standard deviation of the meters&rsquo; errors around the fleet&rsquo;s aim. It covers whatever makes one cab&rsquo;s meter differ from another&rsquo;s on test day: calibration, tires, wear. Most of the window lies on the short side, from &minus;5.9% to +1% on the test mile, so the fast edge is the one a fleet runs into. Box&nbsp;7 has every scatter; box&nbsp;5 offers the centred window.</p>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>3</b>The allowance</span>
+      <p>&ldquo;T.1.1. On Distance Tests. &ndash; Maintenance and acceptance tolerances for taximeters shall be as follows: (a) On Overregistration: 1&nbsp;% of the interval under test. (b) On Underregistration: 4&nbsp;% of the interval under test, with an added tolerance of 30&nbsp;m or 100&nbsp;ft whenever the initial interval is included in the interval under test.&rdquo;</p>
+      <p class="small">NIST Handbook 44 (2026), §&nbsp;5.54, T.1.1. The same numbers serve as acceptance tolerances (for a new or repaired meter) and maintenance tolerances (for one in service); many other devices in the handbook get an acceptance tolerance half their maintenance one.</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>4</b>The test</span>
+      <p>&ldquo;The distance test of a taximeter &hellip; shall include at least duplicate runs of sufficient length to cover at least the third money drop or 1&nbsp;mi, whichever is greater.&rdquo; On a road test the cab is driven &ldquo;over a precisely measured road course&rdquo;, carrying two persons, and its tires are then checked against the pressure posted in the vehicle.</p>
+      <p class="small">Same section, N.1.1(a), N.1.2, N.1.3.1.1 and N.1.3.1.2. A money drop is one step of the fare. This page tests one mile, the shortest run the code allows when the first fare steps come sooner.</p>
+    </section>
+
+    <section class="box third">
+      <span class="no"><b>5</b>Your fleet</span>
+      <div class="controls">
+        <div class="control">
+          <label for="aim"><span>Aim, against true distance</span><output id="aimOut" for="aim">−0.75%</output></label>
+          <input id="aim" type="range" min="-5" max="2" step="0.05" value="-0.75">
+        </div>
+        <div class="control">
+          <label for="sd"><span>Scatter, cab to cab (standard deviation)</span><output id="sdOut" for="sd">0.75%</output></label>
+          <input id="sd" type="range" min="0.1" max="1.5" step="0.05" value="0.75">
+        </div>
+        <fieldset class="rule">
+          <legend>The test mile</legend>
+          <label><input type="checkbox" id="initial" checked> Includes the first fare interval (+100&nbsp;ft on the short side)</label>
+        </fieldset>
+        <fieldset class="rule">
+          <legend>Window</legend>
+          <label><input type="radio" name="rule" value="hb44" checked> As written: <span id="winHb">−5.89% to +1%</span></label>
+          <label><input type="radio" name="rule" value="mid"> Same width, centred: <span id="winMid">±3.45%</span></label>
+        </fieldset>
+        <div class="buttons">
+          <button id="one" type="button">Test one cab</button>
+          <button id="many" type="button">Test 1,000 cabs</button>
+        </div>
+        <p class="small" id="manyOut" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="box twothirds">
+      <span class="no"><b>6</b>The measured mile</span>
+      <svg id="taxistrip" viewBox="0 0 600 220" role="img" aria-label="The distance each tested meter registered over one measured mile, from 0.92 to 1.03 miles, with the permitted window marked in red"></svg>
+      <div class="fields">
+        <div class="field"><span class="k">Registered</span><span class="v" id="fReg">—</span></div>
+        <div class="field"><span class="k">Error</span><span class="v" id="fErr">—</span></div>
+        <div class="field"><span class="k">Per $100 of distance fare</span><span class="v" id="fFare">—</span></div>
+      </div>
+      <p style="margin-top:14px"><span class="stamp idle" id="stamp">Not tested</span> <span class="small" id="reason"></span></p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>7</b>Where a fleet can aim</span>
+      <h2>The fastest aim that passes 99 cabs in 100, by scatter</h2>
+      <svg id="fleet" viewBox="0 0 620 380" role="img" aria-label="Chart: for each cab-to-cab scatter from 0.1 to 1.5 percent (x axis), the highest aim (y axis, minus 4 to plus 3 percent) at which 99 meters in 100 pass. The curve for the window as written crosses zero at a scatter of 0.43 percent; the curve for a centred window stays above zero longer."></svg>
+      <p class="why" id="mapWhy">The solid curve is the fastest aim at which 99 meters in 100 pass the window you chose; the dashed curve is the other window. Above a curve, more than 1 cab in 100 fails. Below the dotted zero line, the fleet&rsquo;s meters run slow on average and the passenger gets the difference. The ring is your fleet. As written, the curve crosses zero at a scatter of 0.43%: any fleet looser than that must aim slow. It ends near 1.34%, past which no aim gets 99 in 100 through. Every point is computed exactly from the normal distribution.</p>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>8</b>The clock, too</span>
+      <p>A meter with a timing device, which charges for waiting time (N.2), gets a clock window that leans the same way, and further.</p>
+      <table class="times">
+        <thead><tr><th>Test</th><th>Fast (passenger pays more)</th><th>Slow</th></tr></thead>
+        <tbody>
+          <tr><td>Distance</td><td class="num">1%</td><td class="num">4%</td></tr>
+          <tr><td>Initial time interval</td><td class="num">3&nbsp;s/min (5%)</td><td class="num">9&nbsp;s/min (15%)</td></tr>
+          <tr><td>Later time intervals</td><td class="num">3&nbsp;s/min (5%)</td><td class="num">6&nbsp;s/min (10%)</td></tr>
+          <tr class="this"><td>Average of later intervals</td><td class="num">0.2&nbsp;s/min (0.33%)</td><td class="num">3&nbsp;s/min (5%)</td></tr>
+        </tbody>
+      </table>
+      <p class="small">NIST Handbook 44 (2026), §&nbsp;5.54, T.1.2.1 and T.1.2.2. In the code&rsquo;s wording, &ldquo;overregistration&rdquo; is the fast side and &ldquo;underregistration&rdquo; the slow side. The time test is the initial interval, four later intervals, and an average of at least four consecutive later intervals (N.2). On that average, the slow side is fifteen times the fast.</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>9</b>Whom it forgives</span>
+      <p>The meter rides in the cab, whose tires the code makes the user keep at the posted pressure (UR.1). The passenger has no way to measure the ride. Handbook&nbsp;44 allows four times as much distance error against the cab as against the passenger. The cab cannot choose which way its errors fall, so the meters&rsquo; ordinary scatter becomes a price cut: a fleet that wants its cabs to pass has to aim short of true.</p>
+      <p>In the three entries before this one, the allowance forgave the maker&rsquo;s error: the packer&rsquo;s spread, the processor&rsquo;s contamination, the Mint&rsquo;s aim. This one forgives the device owner only when the owner is the one who loses. It is still a decision about whose mistakes to forgive; this one sides with the passenger.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>10</b>Not modeled</span>
+      <p class="small">Time charges and the interference test (T.1.3); the fifth-wheel test&rsquo;s extra allowance of twice the transfer standard&rsquo;s standard deviation (T.2); meters that take distance from GPS or a network rather than the wheels, which the code has covered since 2017 (N.1.2.1); and the fare steps themselves, which make a meter&rsquo;s reading jump in drops rather than run smoothly. The page draws each meter&rsquo;s error from a normal distribution around your aim with your scatter, and treats the duplicate runs as one, since a meter with a fixed error reads the same on both. It says nothing about how much real meters scatter, or where any fleet sets them. Local rules may add requirements; Handbook&nbsp;44 is the model code that most US states adopt.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>11</b>Sources</span>
+      <ol class="sources">
+        <li>National Institute of Standards and Technology, <a href="https://doi.org/10.6028/NIST.HB.44-2026"><i>NIST Handbook 44: Specifications, Tolerances, and Other Technical Requirements for Weighing and Measuring Devices</i>, 2026 edition</a>, <a href="https://www.nist.gov/document/2026-nist-handbook-44-section-554">Section 5.54, Taximeters</a>: N.1.1, N.1.2, N.1.3.1, N.2, T.1.1, T.1.2, T.1.3, T.2 and UR.1. A US government work.</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <a href="/">← Register</a>
+    <a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site</a>
+  </footer>
+</main>
+<script src="sim.js"></script>
+</body>
+</html>
