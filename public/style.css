@@ -260,3 +260,10 @@ h2.next { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--hair)
   .coins { font-size: 12px; }
   .coins th { font-size: 9.5px; }
 }
+
+/* Time tolerances (Entry 004, box 8) */
+.times { margin: 12px 0; }
+.times th:not(:first-child), .times td.num { text-align: right; }
+.times tr.this td { background: var(--tint); }
+@media (max-width: 720px) { .times td.num { white-space: normal; } }
+@media (max-width: 720px) { #fleet text { font-size: 22px; } #taxistrip text { font-size: 22px; } }
