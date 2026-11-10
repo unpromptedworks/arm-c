@@ -30,14 +30,14 @@
 
     <section class="box">
       <span class="no"><b>2</b>Finding</span>
-      <p class="finding">This window leans toward the passenger, and the scatter between meters is charged to the cab. If a fleet&rsquo;s meters scatter 1% from cab to cab, the fleet must set them 1.3% slow for 99 in 100 to pass. Its passengers then pay for 1.3% less distance than they ride, on average. Centre a window of the same width on true distance, &plusmn;3.45%, and the same fleet could set its meters 1.1% fast.</p>
+      <p class="finding">This window leans toward the passenger, and the scatter between meters is charged to the cab. If a fleet&rsquo;s meters scatter 1% from cab to cab, the fleet must set them at least 1.3% slow for 99 in 100 to pass. Its passengers then pay for at least 1.3% less distance than they ride, on average. Centre a window of the same width on true distance, &plusmn;3.45%, and the same fleet could set its meters 1.1% fast.</p>
       <p class="why">Scatter is the standard deviation of the meters&rsquo; errors around the fleet&rsquo;s aim. It covers whatever makes one cab&rsquo;s meter differ from another&rsquo;s on test day: calibration, tires, wear. Most of the window lies on the short side, from &minus;5.9% to +1% on the test mile, so the fast edge is the one a fleet runs into. Box&nbsp;7 has every scatter; box&nbsp;5 offers the centred window.</p>
     </section>
 
     <section class="box half">
       <span class="no"><b>3</b>The allowance</span>
       <p>&ldquo;T.1.1. On Distance Tests. &ndash; Maintenance and acceptance tolerances for taximeters shall be as follows: (a) On Overregistration: 1&nbsp;% of the interval under test. (b) On Underregistration: 4&nbsp;% of the interval under test, with an added tolerance of 30&nbsp;m or 100&nbsp;ft whenever the initial interval is included in the interval under test.&rdquo;</p>
-      <p class="small">NIST Handbook 44 (2026), §&nbsp;5.54, T.1.1. The same numbers serve as acceptance tolerances (for a new or repaired meter) and maintenance tolerances (for one in service); many other devices in the handbook get an acceptance tolerance half their maintenance one.</p>
+      <p class="small">NIST Handbook 44 (2026), §&nbsp;5.54, T.1.1. The same numbers serve as acceptance tolerances (for a new or repaired meter) and maintenance tolerances (for one in service).</p>
     </section>
     <section class="box half">
       <span class="no"><b>4</b>The test</span>
@@ -80,14 +80,15 @@
         <div class="field"><span class="k">Error</span><span class="v" id="fErr">—</span></div>
         <div class="field"><span class="k">Per $100 of distance fare</span><span class="v" id="fFare">—</span></div>
       </div>
-      <p style="margin-top:14px"><span class="stamp idle" id="stamp">Not tested</span> <span class="small" id="reason"></span></p>
+      <p style="margin-top:14px"><span class="stamp idle" id="stamp">Not tested</span></p>
+      <p class="small" id="reason" aria-live="polite"></p>
     </section>
 
     <section class="box">
       <span class="no"><b>7</b>Where a fleet can aim</span>
       <h2>The fastest aim that passes 99 cabs in 100, by scatter</h2>
       <svg id="fleet" viewBox="0 0 620 380" role="img" aria-label="Chart: for each cab-to-cab scatter from 0.1 to 1.5 percent (x axis), the highest aim (y axis, minus 4 to plus 3 percent) at which 99 meters in 100 pass. The curve for the window as written crosses zero at a scatter of 0.43 percent; the curve for a centred window stays above zero longer."></svg>
-      <p class="why" id="mapWhy">The solid curve is the fastest aim at which 99 meters in 100 pass the window you chose; the dashed curve is the other window. Above a curve, more than 1 cab in 100 fails. Below the dotted zero line, the fleet&rsquo;s meters run slow on average and the passenger gets the difference. The ring is your fleet. As written, the curve crosses zero at a scatter of 0.43%: any fleet looser than that must aim slow. It ends near 1.34%, past which no aim gets 99 in 100 through. Every point is computed exactly from the normal distribution.</p>
+      <p class="why" id="mapWhy">The solid curve is the fastest aim at which 99 meters in 100 pass the window you chose; the dashed curve is the other window. Above a curve, more than 1 cab in 100 fails. Below the dotted zero line, the fleet&rsquo;s meters run slow on average and the passenger gets the difference. The ring is your fleet. As written, the curve crosses zero at a scatter of 0.43%: any fleet looser than that must aim slow. It ends near 1.34%, past which no aim gets 99 in 100 through. Every point is computed from the normal distribution (a polynomial approximation, good to about one part in ten million), not simulated.</p>
     </section>
 
     <section class="box half">
@@ -112,13 +113,15 @@
 
     <section class="box">
       <span class="no"><b>10</b>Not modeled</span>
-      <p class="small">Time charges and the interference test (T.1.3); the fifth-wheel test&rsquo;s extra allowance of twice the transfer standard&rsquo;s standard deviation (T.2); meters that take distance from GPS or a network rather than the wheels, which the code has covered since 2017 (N.1.2.1); and the fare steps themselves, which make a meter&rsquo;s reading jump in drops rather than run smoothly. The page draws each meter&rsquo;s error from a normal distribution around your aim with your scatter, and treats the duplicate runs as one, since a meter with a fixed error reads the same on both. It says nothing about how much real meters scatter, or where any fleet sets them. Local rules may add requirements; Handbook&nbsp;44 is the model code that most US states adopt.</p>
+      <p class="small">Time charges and the interference test (T.1.3); the fifth-wheel test&rsquo;s extra allowance of twice the transfer standard&rsquo;s standard deviation (T.2); meters that take distance from GPS or a network rather than the wheels, which the code has covered since 2017 (N.1.2.1); and the fare steps themselves, which make a meter&rsquo;s reading jump in drops rather than run smoothly. The page draws each meter&rsquo;s error from a normal distribution around your aim with your scatter, and treats the duplicate runs as one, since a meter with a fixed error reads the same on both. It says nothing about how much real meters scatter, or where any fleet sets them; the 1% in box&nbsp;2 is an example, not a measurement. One report points the same way: when state inspectors road-tested Raleigh&rsquo;s taxis on a measured mile in 2006, a local news story reported that &ldquo;so far, inspectors say they have found more meters undercharging than overcharging.&rdquo; It gives no figures.<sup>2</sup> Handbook&nbsp;44 is a model code; NIST says &ldquo;all 50 States adopt either the current version or an older edition&rdquo; of it, and local rules may add to it.<sup>3</sup></p>
     </section>
 
     <section class="box">
       <span class="no"><b>11</b>Sources</span>
       <ol class="sources">
         <li>National Institute of Standards and Technology, <a href="https://doi.org/10.6028/NIST.HB.44-2026"><i>NIST Handbook 44: Specifications, Tolerances, and Other Technical Requirements for Weighing and Measuring Devices</i>, 2026 edition</a>, <a href="https://www.nist.gov/document/2026-nist-handbook-44-section-554">Section 5.54, Taximeters</a>: N.1.1, N.1.2, N.1.3.1, N.2, T.1.1, T.1.2, T.1.3, T.2 and UR.1. A US government work.</li>
+        <li>WRAL, <a href="https://www.wral.com/story/151301">&ldquo;Taxi Inspectors Make Sure Passengers Are Not Being Taken For A Ride&rdquo;</a>, Raleigh, 3 August 2006. Short quotation.</li>
+        <li>NIST Office of Weights and Measures, <a href="https://www.nist.gov/pml/owm/nist-handbooks-and-ncwm-brief-history">&ldquo;NIST Handbooks and NCWM: A Brief History&rdquo;</a>.</li>
       </ol>
     </section>
   </div>

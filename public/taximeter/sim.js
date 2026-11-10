@@ -101,18 +101,23 @@ function drawStrip(errs) {
   svg.append(el("text", { x: xs(b) + 4, y: 18, style: "fill:" + c.stamp }, "long " + pct(hi, hi % 1 ? 2 : 0)));
   svg.append(el("line", { x1: xs(1), x2: xs(1), y1: 22, y2: BASE, stroke: c.ink, "stroke-dasharray": "2 3" }));
   if (!errs) return;
+  const one = errs.length === 1;
+  const step = one ? 14 : 5;
+  const counts = new Map();
+  for (const e of errs) { const bin = Math.round(xs(1 + e / 100) / step); counts.set(bin, (counts.get(bin) || 0) + 1); }
+  const tallest = Math.max(...counts.values());
+  const room = BASE - 30;
+  const pitch = one ? 13 : Math.min(5.4, room / tallest);
+  const r = one ? 6 : Math.max(0.8, Math.min(2.2, pitch / 2 - 0.3));
   const bins = new Map();
-  const r = errs.length === 1 ? 6 : 2.2, step = errs.length === 1 ? 14 : 5;
   for (const e of errs) {
-    const mi = 1 + e / 100;
-    const bin = Math.round(xs(mi) / step);
+    const bin = Math.round(xs(1 + e / 100) / step);
     const k = bins.get(bin) || 0;
     bins.set(bin, k + 1);
-    if (k > 22) continue;
     const bad = e < lo || e > hi;
     svg.append(el("circle", {
-      cx: (bin * step).toFixed(1), cy: BASE - r - 4 - k * (2 * r + 1), r,
-      fill: bad ? c.stamp : "none", stroke: bad ? c.stamp : c.pen, "stroke-width": 1.5,
+      cx: (bin * step).toFixed(1), cy: (BASE - r - 4 - k * pitch).toFixed(1), r: r.toFixed(2),
+      fill: bad ? c.stamp : "none", stroke: bad ? c.stamp : c.pen, "stroke-width": one ? 1.5 : Math.min(1.2, r * 0.6),
     }));
   }
 }
@@ -120,15 +125,17 @@ function drawStrip(errs) {
 function showOne(e) {
   const { lo, hi } = state();
   const pass = e >= lo && e <= hi;
+  const mag = Math.abs(e).toFixed(2) + "%";
   $("fReg").textContent = (1 + e / 100).toFixed(4) + " mi";
   $("fErr").textContent = pct(e);
-  $("fFare").textContent = (e >= 0 ? "+$" : "−$") + Math.abs(e).toFixed(2);
+  $("fFare").textContent = Math.abs(e) < 0.005 ? "$0.00" : (e >= 0 ? "+$" : "−$") + Math.abs(e).toFixed(2);
   const st = $("stamp");
   st.className = "stamp " + (pass ? "pass" : "fail");
   st.textContent = pass ? "Passed" : "Rejected";
   let why;
-  if (pass) why = e > 0 ? "Long by " + pct(e) + ": the passenger pays for distance the cab did not drive, and the code allows it." : "Short by " + pct(-e).slice(0) + ": the passenger rides that distance free.";
-  else why = e > hi ? "Long by " + pct(e) + ", past the " + pct(hi, hi % 1 ? 2 : 0) + " edge." : "Short by " + pct(-e) + ", past the " + pct(-lo) + " edge.";
+  if (Math.abs(e) < 0.005) why = "On the mark: the meter registered the mile.";
+  else if (pass) why = e > 0 ? "Long by " + mag + ": the passenger pays for distance the cab did not drive, and the code allows it." : "Short by " + mag + ": the passenger rides that distance free.";
+  else why = e > hi ? "Long by " + mag + ", past the " + Math.abs(hi).toFixed(hi % 1 ? 2 : 0) + "% edge." : "Short by " + mag + ", past the " + Math.abs(lo).toFixed(2) + "% edge.";
   $("reason").textContent = why;
 }
 
@@ -188,7 +195,9 @@ function drawMap() {
     svg.append(el("text", { x: L - 8, y: my(a) + 4, "text-anchor": "end" }, (a > 0 ? "+" : a < 0 ? "−" : "") + Math.abs(a) + "%"));
   }
   svg.append(el("line", { x1: L, x2: R, y1: my(0), y2: my(0), stroke: c.ink, "stroke-dasharray": "2 3" }));
-  for (let s = 0.25; s <= MX1 + 1e-9; s += 0.25) {
+  const narrow = window.matchMedia("(max-width: 720px)").matches;
+  const tick = narrow ? 0.5 : 0.25;
+  for (let s = tick; s <= MX1 + 1e-9; s += tick) {
     svg.append(el("line", { x1: mx(s), x2: mx(s), y1: B, y2: B + 6, stroke: c.ink }));
     svg.append(el("text", { x: mx(s), y: B + 22, "text-anchor": s > MX1 - 0.01 ? "end" : "middle" }, s.toFixed(2) + "%"));
   }
@@ -224,7 +233,13 @@ function drawMap() {
   // The reader's fleet.
   const ok = passChance(aim, sd, lo, hi) >= 0.99;
   svg.append(el("circle", { cx: mx(sd), cy: my(aim), r: 7, fill: "none", stroke: ok ? c.pen : c.stamp, "stroke-width": 2.5 }));
-  svg.append(el("text", { x: mx(sd), y: my(aim) + 30, "text-anchor": "middle", style: "fill:" + c.pen + ";font-weight:700" }, "your fleet"));
+  // Label the ring on the side away from the curve, inside the plot.
+  const top = topAim(sd, lo, hi);
+  let ly = !Number.isNaN(top) && aim < top ? my(aim) + 30 : my(aim) - 16;
+  if (ly > B - 6) ly = my(aim) - 16;
+  if (ly < T + 30) ly = my(aim) + 30;
+  const lx = Math.min(Math.max(mx(sd), L + 70), R - 70);
+  svg.append(el("text", { x: lx, y: ly, "text-anchor": "middle", style: "fill:" + c.pen + ";font-weight:700" }, "your fleet"));
 }
 
 function update() {
@@ -244,4 +259,5 @@ for (const r of document.querySelectorAll('input[name="rule"]')) r.addEventListe
 $("one").addEventListener("click", testOne);
 $("many").addEventListener("click", testMany);
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", update);
+window.matchMedia("(max-width: 720px)").addEventListener("change", update);
 update();
