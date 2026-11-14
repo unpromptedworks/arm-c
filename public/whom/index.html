@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Whom it forgives: four rules, one axis — Unreasonable Error</title>
+<meta name="description" content="An index of the register's worked tolerances by whom each one forgives. Three rules drawn on one axis, in percent of nominal, with one fault you set and run through all three.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Whom it forgives: the register on one axis">
+<meta property="og:description" content="The jar rule and the taximeter rule have the same shape and forgive opposite parties. Run one fault through three official tolerances and see where each one leans.">
+<meta property="og:image" content="https://unreasonable-error.unpromptedworks.com/og.png">
+<meta property="og:url" content="https://unreasonable-error.unpromptedworks.com/whom/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="sheet">
+  <header class="formhead">
+    <div class="name"><a href="/">Unreasonable Error</a></div>
+    <div class="formno">Form UE-3 · Index by whom it forgives · Entries 001–004</div>
+  </header>
+
+  <div class="grid">
+    <section class="box">
+      <span class="no"><b>1</b>Item</span>
+      <h1>Whom it forgives: the register on one axis</h1>
+      <p class="deck">Every worked entry ends in a box called &ldquo;Whom it forgives&rdquo;. This form collects them. Three of the rules have a nominal value to be wrong from, so they can be drawn on one scale, in percent of that value: to the right, error that pays whoever controls it; to the left, error that costs them. Set one fault and run it through all three.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>2</b>Finding</span>
+      <p class="finding">The edges of a window do not say whom it forgives. Drawn here, the jar rule and the meter rule have the same shape, tight on the side that pays the one in control and wide on the side that costs them. The jar rule forgives the packer; the meter rule forgives the passenger.</p>
+      <p class="why">The difference is in how each is measured. The meter is judged on its own error, against fixed edges. The jar lot is judged on a sample&rsquo;s average, against a margin that grows with the sample&rsquo;s spread. So a steady packer half a percent short is caught nearly every time, and a careless one passes about 2 times in 3 (box&nbsp;3, the first two buttons).</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>3</b>One fault, three rules</span>
+      <div class="controls">
+        <div class="control">
+          <label for="fault"><span>The fault: how far the aim is off nominal, in the controller&rsquo;s favour</span><output id="faultOut" for="fault">—</output></label>
+          <input id="fault" type="range" min="-5" max="5" step="0.05" value="0.5">
+        </div>
+        <div class="control">
+          <label for="spread"><span>Spread of single items (standard deviation, % of nominal)</span><output id="spreadOut" for="spread">—</output></label>
+          <input id="spread" type="range" min="0" max="2" step="0.05" value="0.25">
+        </div>
+        <div class="buttons">
+          <button type="button" data-f="0.5" data-s="0.25">Steady, half a percent their way</button>
+          <button type="button" data-f="0.5" data-s="1">Careless, half a percent their way</button>
+          <button type="button" data-f="-2" data-s="0.5">Two percent against them</button>
+        </div>
+      </div>
+
+      <div class="axis" aria-hidden="true">
+        <div class="axhead"><span>&larr; costs the one in control</span><span>pays the one in control &rarr;</span></div>
+        <div class="ticks">
+          <span style="left:0%">&minus;6%</span><span style="left:16.667%">&minus;4%</span><span style="left:33.333%">&minus;2%</span><span style="left:50%">0</span><span style="left:66.667%">+2%</span><span style="left:83.333%">+4%</span><span style="left:100%">+6%</span>
+        </div>
+      </div>
+
+      <div class="wrow">
+        <div class="wlab"><a href="/short-fill/">001 Short fill</a> · the packer · <span class="small">12 jars of 454&nbsp;g; each jar, and their average</span></div>
+        <div class="track">
+          <div class="nom"></div>
+          <div class="win open" id="jarWin"></div>
+          <div class="win avg" id="jarAvg"></div>
+          <div class="sp" id="jarSp"></div>
+          <div class="fault" id="jarF"></div>
+        </div>
+        <div class="wnote small">Pale: any one jar may be up to 19.9&nbsp;g (4.38%) short; no limit on overfill. Dark: the <span id="jarAvgLab">—</span>.</div>
+        <div class="wout"><span class="stamp idle" id="jarS">—</span><span class="v pen" id="jarP">—</span></div>
+      </div>
+
+      <div class="wrow">
+        <div class="wlab"><a href="/pyx/">003 Coin weight</a> · the Mint · <span class="small">ten pence; average of 88 coins (not more than 1&nbsp;kg)</span></div>
+        <div class="track">
+          <div class="nom"></div>
+          <div class="win" id="coinWin"></div>
+          <div class="sp" id="coinSp"></div>
+          <div class="sp tight" id="coinAvgSp"></div>
+          <div class="fault" id="coinF"></div>
+        </div>
+        <div class="wnote small">The remedy: 64.6&nbsp;mg (0.57%) either way, light or heavy, applied to the average. Under the blue line, the narrow dark bar is how much an average of 88 coins scatters.</div>
+        <div class="wout"><span class="stamp idle" id="coinS">—</span><span class="v pen" id="coinP">—</span></div>
+      </div>
+
+      <div class="wrow">
+        <div class="wlab"><a href="/taximeter/">004 Taximeter</a> · the cab owner · <span class="small">one cab, one run of the measured mile</span></div>
+        <div class="track">
+          <div class="nom"></div>
+          <div class="win" id="taxiWin"></div>
+          <div class="sp" id="taxiSp"></div>
+          <div class="fault" id="taxiF"></div>
+        </div>
+        <div class="wnote small">The meter may register up to 1% too much distance (pays the owner) or 4% too little (costs the owner).</div>
+        <div class="wout"><span class="stamp idle" id="taxiS">—</span><span class="v pen" id="taxiP">—</span></div>
+      </div>
+
+      <p class="verdictline"><b id="verdict">—</b></p>
+      <p class="why">Grey band: what each rule allows. Blue line: the aim you set. Pale blue: one standard deviation of single items either side of it (jars, coins, cabs in a fleet). Each count is the chance the inspection passes, out of 1,000: for jars from 20,000 simulated samples of 12 (the same draws each time, so the count does not flicker); for coins and cabs from the normal distribution directly. The stamp shows the likelier outcome.</p>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>4</b>Why the jar rule flips</span>
+      <p>At a spread of 0.25% (1.1&nbsp;g), a lot of jars half a percent short (2.3&nbsp;g) passes 0 times in 1,000: the average is short by far more than 0.635 times a 1.1-gram standard deviation. At a spread of 1% (4.5&nbsp;g), the margin is about 2.9&nbsp;g and the same shortfall passes about 650 times in 1,000. The coin and the meter rules only get kinder to the aim as the spread falls. The jar rule gets harsher.</p>
+      <p>So the jar rule&rsquo;s own window, 4.38% wide on the packer&rsquo;s side, is not what a steady packer can use. What it can use is the dark band, and the dark band is made of its own scatter (<a href="/short-fill/">Entry 001</a>).</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>5</b>The one rule that minds the other side</span>
+      <p>Press &ldquo;Two percent against them&rdquo;. Jars 2% over pass: Handbook&nbsp;133 &ldquo;does not specify limits of overfilling&rdquo;. A meter 2% slow passes: its slow edge is 4%. Coins 2% heavy fail every time.</p>
+      <p>The coin remedy is the only one of the three with edges an equal distance either side. Heavy coins cost the Mint metal, so the remedy protects the Mint from itself about as much as it protects anyone from the Mint. Its lean is in the measuring: an average of 88 coins scatters about a ninth as much as one coin, and the remedy does not shrink with it (<a href="/pyx/">Entry 003</a>).</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>6</b>Index: whom each rule forgives</span>
+      <table class="register whomtab">
+        <thead>
+          <tr><th>Entry</th><th>Error in whose control</th><th>Where the forgiving sits</th><th>Whom it forgives</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/short-fill/">001 Short fill</a><br><span class="small">NIST Handbook 133</span></td>
+            <td>The packer</td>
+            <td>In the test of the average: its margin is 0.635 times the sample&rsquo;s own standard deviation.</td>
+            <td>The packer&rsquo;s scatter. The wider the fill, the further short the average may run.</td>
+          </tr>
+          <tr>
+            <td><a href="/chocolate/">002 Insects in chocolate</a><br><span class="small">FDA CPG Sec.&nbsp;515.700</span></td>
+            <td>The processor</td>
+            <td>In the action level, an average of 60 fragments per 100&nbsp;g over six pieces, with a cap of 90 on any one. There is no other side: a lot cannot hold fewer than none, so it is not on the axis.</td>
+            <td>Not a party but a shape. Below the level it forgives the even lot; above it, the patchy one.</td>
+          </tr>
+          <tr>
+            <td><a href="/pyx/">003 Coin weight</a><br><span class="small">Coinage Act 1971</span></td>
+            <td>The Mint</td>
+            <td>In the wording: a remedy for each coin, measured on the average of a kilogram.</td>
+            <td>The Mint&rsquo;s aim, which can sit almost the whole remedy light and pass.</td>
+          </tr>
+          <tr>
+            <td><a href="/taximeter/">004 Taximeter</a><br><span class="small">NIST Handbook 44, §&nbsp;5.54</span></td>
+            <td>The cab owner</td>
+            <td>In the edges: 1% the owner&rsquo;s way, 4% the passenger&rsquo;s.</td>
+            <td>The passenger. The owner is forgiven only for errors the owner pays for.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>7</b>The position, tested against the register</span>
+      <p>The site&rsquo;s position has two halves. &ldquo;A tolerance is a decision about whose mistakes to forgive&rdquo;: four entries in, this holds, with one strain. The chocolate rule forgives a distribution of filth, not a person, and which lots it forgives turns over at its own limit. A rule can forgive a shape that no one chose.</p>
+      <p>&ldquo;Read one closely and you can tell who wrote it&rdquo;: this half has not been tested. Each entry found whom its rule forgives. None has yet found who argued for the edge, or when. Until one does, the register shows what the rules do. It has not shown who wanted them to do it.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>8</b>Not modeled</span>
+      <p class="small">One percent means a different thing in each rule, and the axis lays them side by side without making them equal. The jar edge is a per-package limit for a 454&nbsp;g label (other labels have other limits), checked with the average on a sample of 12 jars from a lot of 12 to 250. The coin remedy is for the ten pence as enacted in 1971. The meter edges leave out the extra 100&nbsp;ft allowed when the test includes the first fare interval. In box&nbsp;3, fills, coin weights and cab errors are normal around the aim, and the jar margin in the dark band takes the sample&rsquo;s standard deviation to equal the line&rsquo;s.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>9</b>Sources</span>
+      <ol class="sources">
+        <li>National Institute of Standards and Technology, <a href="https://doi.org/10.6028/NIST.HB.133-2025"><i>NIST Handbook 133</i>, 2025 edition</a>, Chapter 1, Section 1.2, &ldquo;Individual Package Requirement&rdquo; (&ldquo;This handbook does not specify limits of overfilling (with the exception of textiles)&rdquo;), and Appendix A, Tables 2-1 and 2-5. A US government work.</li>
+        <li>US Food and Drug Administration, <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cpg-sec-515700-chocolate-chocolate-liquor-adulteration-insect-and-rodent-filth">Compliance Policy Guide Sec.&nbsp;515.700</a>, criterion 1. A US government work.</li>
+        <li><a href="https://www.legislation.gov.uk/ukpga/1971/24/section/1/enacted">Coinage Act 1971, section 1</a> and <a href="https://www.legislation.gov.uk/ukpga/1971/24/schedule/1/enacted">Schedule 1</a>, as enacted. Contains public sector information licensed under the Open Government Licence v3.0.</li>
+        <li>National Institute of Standards and Technology, <a href="https://www.nist.gov/document/2026-nist-handbook-44-section-554"><i>NIST Handbook 44</i>, 2026 edition, Section 5.54, Taximeters</a>, T.1.1. A US government work.</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <a href="/">← Register</a>
+    <a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site</a>
+  </footer>
+</main>
+<script src="sim.js"></script>
+</body>
+</html>
