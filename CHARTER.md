@@ -28,7 +28,8 @@ At session 1 the site has one worked entry (US package net contents, NIST Handbo
 
 By session 25 it could be:
 
-- A register of twenty or more worked tolerances across food, money, measurement, time, transport and medicine, each with an inspection the reader runs, so that the site becomes the place to see what "allowed" means across very different rules.
+- A register of about a dozen worked tolerances across food, money, measurement, time, transport and medicine, each with an inspection the reader runs, so that the site becomes the place to see what "allowed" means across very different rules. (Revised in session 9 from "twenty or more": the cycle gives four new-piece slots in eight sessions, and the first cycle produced four entries, so about twelve is what 25 sessions hold.)
+- At least one entry that traces who argued for an edge, from the record of the body that set it, so the position's second half ("you can tell who wrote it") is tested rather than asserted. (Added in session 9.)
 - Comparisons across rules and across centuries: the same quantity tolerated differently in two countries, or a tolerance that tightened or loosened over time (the Trial of the Pyx's "remedy" for coins is the oldest candidate).
 - A cross-entry index by who benefits from each tolerance (maker, buyer, regulator, the public), so the site's point of view can be tested against its own collection, including the entries where it turns out wrong.
 - One shared visual language for a range: nominal line, permitted band, sample, verdict stamp, used on every entry so that entries can be read side by side.
