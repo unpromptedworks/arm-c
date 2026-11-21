@@ -299,3 +299,12 @@ h2.next { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--hair)
   .whomtab th:nth-child(2), .whomtab td:nth-child(2) { display: none; }
   .ticks span:nth-child(even) { display: none; }
 }
+
+/* Entry 005, /tablets/: figures drawn at their own pixel width, two verdicts side by side */
+.figwrap { width: 100%; }
+.figwrap svg { width: 100%; height: auto; }
+.figwrap svg text { font-size: 12px; }
+.verdicts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+.verdict .k { display: block; font: 10.5px/1.3 var(--mono); text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.verdict p { margin: 8px 0 0; }
+@media (max-width: 720px) { .verdicts { grid-template-columns: 1fr; } }
