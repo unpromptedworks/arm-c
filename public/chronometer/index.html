@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The fast lean — Unreasonable Error</title>
+<meta name="description" content="ISO 3159, the standard behind a Swiss chronometer certificate, lets a watch gain 6 seconds a day but lose only 4. Regulate a movement and send it through the fifteen-day test.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The fast lean: a chronometer may gain 6 seconds a day and lose 4">
+<meta property="og:description" content="Every window for a Swiss mechanical chronometer since 1961 has leaned fast, and the one on the certificate is not the one on the wrist. Run the fifteen-day test on a movement you regulate.">
+<meta property="og:image" content="https://unreasonable-error.unpromptedworks.com/og.png">
+<meta property="og:url" content="https://unreasonable-error.unpromptedworks.com/chronometer/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="sheet">
+  <header class="formhead">
+    <div class="name"><a href="/">Unreasonable Error</a></div>
+    <div class="formno">Entry 006 · The fast lean · ISO&nbsp;3159, clause&nbsp;7</div>
+  </header>
+
+  <div class="grid">
+    <section class="box">
+      <span class="no"><b>1</b>Item</span>
+      <h1>The fast lean: a chronometer may gain 6 seconds a day and lose 4</h1>
+      <p class="deck">ISO&nbsp;3159 is the test a Swiss watch movement passes to be sold as a &ldquo;chronometer&rdquo;. Its first criterion lets the movement&rsquo;s mean rate run from 4 seconds a day slow to 6 fast. You regulate a movement and send it through the fifteen days.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>2</b>Finding</span>
+      <p class="finding">Every official window for a Swiss mechanical chronometer&rsquo;s rate leans fast, and the one on the certificate is not the one on the wrist.</p>
+      <p class="why">The bureaux&rsquo; window before 1973, &minus;1 to +10 seconds a day, was centred at +4.5; ISO&nbsp;3159&rsquo;s &minus;4 to +6 is centred at +1; the METAS Master Chronometer&rsquo;s 0 to +5 at +2.5. None is centred on true time. The quartz chronometer, which COSC tests to its own limits, is the exception: &plusmn;0.07&nbsp;s/d at 23&nbsp;&deg;C, centred on zero. And ISO&nbsp;3159 measures the rate at 23&nbsp;&deg;C, while allowing it to change by up to 0.6&nbsp;s/d for each degree. At the 33&nbsp;&deg;C that METAS uses for a watch on a wrist, a movement that passes every criterion may run from &minus;10 to +12&nbsp;s/d, if its rate changes evenly with temperature (box&nbsp;6).</p>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>3</b>The allowance</span>
+      <p>Category&nbsp;1 (casing diameter over 20&nbsp;mm), in seconds a day: mean daily rate <span class="mono">&minus;4 +6</span>; mean variation in rates <span class="mono">2</span>; greatest variation in rates <span class="mono">5</span>; difference between the rates in horizontal and vertical positions <span class="mono">&minus;6 +8</span>; greatest deviation in rates <span class="mono">10</span>; variation in rate as a function of temperature <span class="mono">&plusmn;0.6</span> s/(d&middot;&deg;C); resumption of the rate <span class="mono">&plusmn;5</span>. &ldquo;The minimum requirements are considered to be absolute limits and no calculation result shall be rounded off.&rdquo;</p>
+      <p class="small">ISO&nbsp;3159:2009, clause&nbsp;7. The 1976 edition gives the same mean rate, &minus;4 +6. Category&nbsp;2, smaller watches, is allowed &minus;5 +8.</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>4</b>The test</span>
+      <p>Fifteen days, the watch wound each day and read against reference time to &plusmn;0.5&nbsp;s, &ldquo;rounded to the nearest full second&rdquo;. Days 1&ndash;10 at 23&nbsp;&deg;C, two days in each of five positions; day 11 at 8&nbsp;&deg;C, day 12 at 23, day 13 at 38, all dial up; days 14 and 15 back at 23&nbsp;&deg;C, 6 o&rsquo;clock up. The mean rate is the mean of the first ten days only.</p>
+      <p class="small">Clauses 5 and 6; the daily winding, &ldquo;at precisely the same time each day&rdquo;, is from Wikipedia&rsquo;s COSC article (source&nbsp;2). Positions are named as in ISO&nbsp;3158: 6H, 3H and 9H are 6, 3 and 9 o&rsquo;clock up; FH is dial down (<i>fond</i>, caseback, up); CH is dial up (<i>cadran haut</i>).</p>
+    </section>
+
+    <section class="box third">
+      <span class="no"><b>5</b>Your movement</span>
+      <div class="controls">
+        <div class="control">
+          <label for="aim"><span>Aim: rate you regulate it to, at 23&nbsp;&deg;C</span><output id="aimOut" for="aim">+1.5 s/d</output></label>
+          <input id="aim" type="range" min="-8" max="12" step="0.5" value="1.5">
+        </div>
+        <div class="control">
+          <label for="spread"><span>Positional error (standard deviation between positions)</span><output id="spreadOut" for="spread">1.5 s/d</output></label>
+          <input id="spread" type="range" min="0" max="5" step="0.1" value="1.5">
+        </div>
+        <div class="control">
+          <label for="wobble"><span>Day-to-day wobble (standard deviation)</span><output id="wobbleOut" for="wobble">0.5 s/d</output></label>
+          <input id="wobble" type="range" min="0" max="2" step="0.1" value="0.5">
+        </div>
+        <div class="control">
+          <label for="coef"><span>Temperature error, per degree</span><output id="coefOut" for="coef">+0.55 s/d/&deg;C</output></label>
+          <input id="coef" type="range" min="-1" max="1" step="0.05" value="0.55">
+        </div>
+        <div class="buttons">
+          <button id="one" type="button">Test one movement</button>
+          <button id="many" type="button">Test 1,000</button>
+        </div>
+        <p class="small" id="manyOut" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="box twothirds">
+      <span class="no"><b>6</b>Three windows, and the wrist</span>
+      <p class="small">The blue line is your aim; in the last row the faint line is your aim at 23&nbsp;&deg;C and the solid one your aim moved by ten degrees of your temperature error. The first three rows judge only the mean rate. METAS tests a finished watch under conditions of its own, so its row is a comparison of windows, not of tests.</p>
+      <div class="axis" aria-hidden="true">
+        <div class="axhead"><span>&larr; slow (loses)</span><span>fast (gains) &rarr;</span></div>
+        <div class="ticks">
+          <span style="left:0%">&minus;15</span><span style="left:16.667%">&minus;10</span><span style="left:33.333%">&minus;5</span><span style="left:50%">0</span><span style="left:66.667%">+5</span><span style="left:83.333%">+10</span><span style="left:100%">+15&nbsp;s/d</span>
+        </div>
+      </div>
+
+      <div class="wrow">
+        <div class="wlab"><b>Bureaux officiels, 1961&ndash;73</b> · <span class="small">mean rate in five positions</span></div>
+        <div class="track"><div class="nom"></div><div class="win" id="winBO"></div><div class="fault" id="fBO"></div></div>
+        <div class="wnote small">&minus;1 to +10. Centre +4.5.</div>
+        <div class="wout"><span class="stamp idle" id="sBO">&mdash;</span><span class="v pen" id="pBO">&mdash;</span></div>
+      </div>
+      <div class="wrow">
+        <div class="wlab"><b>ISO&nbsp;3159 (COSC), since 1973</b> · <span class="small">mean of days 1&ndash;10, at 23&nbsp;&deg;C</span></div>
+        <div class="track"><div class="nom"></div><div class="win" id="winISO"></div><div class="fault" id="fISO"></div></div>
+        <div class="wnote small">&minus;4 to +6. Centre +1.</div>
+        <div class="wout"><span class="stamp idle" id="sISO">&mdash;</span><span class="v pen" id="pISO">&mdash;</span></div>
+      </div>
+      <div class="wrow">
+        <div class="wlab"><b>METAS Master Chronometer</b> · <span class="small">cased watch, six positions, 23 and 33&nbsp;&deg;C</span></div>
+        <div class="track"><div class="nom"></div><div class="win" id="winMETAS"></div><div class="fault" id="fMETAS"></div></div>
+        <div class="wnote small">0 to +5. Centre +2.5. It may not lose at all.</div>
+        <div class="wout"><span class="stamp idle" id="sMETAS">&mdash;</span><span class="v pen" id="pMETAS">&mdash;</span></div>
+      </div>
+      <div class="wrow">
+        <div class="wlab"><b>ISO&nbsp;3159, worn at 33&nbsp;&deg;C</b> · <span class="small">what all seven criteria together allow</span></div>
+        <div class="track"><div class="nom"></div><div class="win open" id="winWrist" style="border-left:2px dashed var(--stamp);border-right:2px dashed var(--stamp)"></div><div class="win avg" id="winISO2"></div><div class="fault" id="fISO2" style="opacity:.35"></div><div class="fault" id="fWrist"></div></div>
+        <div class="wnote small">Dashed: &minus;4 to +6 at 23&nbsp;&deg;C, plus or minus 10&nbsp;&deg;C &times; 0.6&nbsp;s/d, so &minus;10 to +12. Dark: the certificate&rsquo;s window. Your movement on a wrist: <span class="pen" id="wristLab">&mdash;</span>; the stamp asks whether that is still inside &minus;4 to +6.</div>
+        <div class="wout"><span class="stamp idle" id="sWrist">&mdash;</span><span class="v pen" id="pWrist">&mdash;</span></div>
+      </div>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>7</b>The fifteen days</span>
+      <div class="verdicts">
+        <div>
+          <table class="times">
+            <thead><tr><th>Day</th><th>Position</th><th>Temp.</th><th>E, s</th><th>Rate, s/d</th></tr></thead>
+            <tbody id="days"></tbody>
+          </table>
+          <p class="small">E is the watch minus reference time, rounded to the second; the rate is today&rsquo;s E minus yesterday&rsquo;s. Shaded: days off 23&nbsp;&deg;C.</p>
+        </div>
+        <div class="verdict">
+          <span class="k">Certificate</span>
+          <span class="stamp idle" id="stOne">Not tried</span>
+          <p class="small" id="whyOne"></p>
+          <div class="fields" id="crit"></div>
+          <p class="small">V and Vmax: the mean and the largest of the five changes between the two days in one position. D: days 1&ndash;2 (6H) minus days 9&ndash;10 (CH). P: the largest gap between one of the first ten rates and their mean. C: day 13 minus day 11, over 30 degrees. R: day 15 minus the mean of days 1 and 2.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="box half">
+      <span class="no"><b>8</b>Whom it forgives</span>
+      <p>The window forgives the maker an error in regulation, and forgives it more on the fast side: up to 6 seconds a day there, 4 on the slow. A movement regulated a little fast has a margin of 5 seconds either way; one regulated true has 4. The wearer pays for that lean in minutes early rather than minutes late: at +6&nbsp;s/d a watch set right on the first of the month is three minutes fast by the thirtieth; at &minus;4 it is two minutes slow.</p>
+      <p>The second forgiving is quieter. The test is the maker&rsquo;s conditions: a movement wound every day, at 23&nbsp;&deg;C, turned through five positions on a schedule. Temperature is held to a limit of its own, but between the lab&rsquo;s 23&nbsp;&deg;C and a wrist&rsquo;s 33 that limit allows a certified rate to move by 6&nbsp;s/d either way: more than the window&rsquo;s whole slow side, and as much as its fast side. METAS, which tests at 33&nbsp;&deg;C and allows no losing at all, is the first of the three to write the wrist into the rule.</p>
+    </section>
+    <section class="box half">
+      <span class="no"><b>9</b>Who wrote it</span>
+      <p>This page cannot say why the lean is fast. What the record here shows is that it has moved. Before 1973 the bureaux allowed a mean of &minus;1 to +10 in five positions, a window 11 seconds wide whose centre lay 4.5 seconds fast. The rule of 1973, in ISO&nbsp;3159 since its 1976 edition, narrowed it by one second and moved its centre to +1. METAS moved it back toward fast, to +2.5. A watch that ran 3 seconds slow would have been refused in 1972, certified from 1973, and refused again by METAS.</p>
+      <p class="small">The 1961&ndash;73 figure comes from Wikipedia&rsquo;s article on COSC, which cites F. von&nbsp;Osterhausen, <i>Wristwatch Chronometers</i> (1997); the book itself was not read for this page.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>10</b>Not modeled</span>
+      <p class="small">Category&nbsp;2 movements (20&nbsp;mm and smaller); quartz chronometers, which COSC tests to its own limits; the run-down of the mainspring between windings, which a daily-wound test does not see; the auxiliary mechanisms switched on for day&nbsp;10. The simulation gives each position one fixed offset, drawn from a normal distribution with your positional error, and each day an independent wobble. It treats the temperature error as even from 8 to 38&nbsp;&deg;C, which real balance springs need not be, and the 33&nbsp;&deg;C row applies it to the mean of the five positions. The day-to-day readings are rounded to the second, as the standard requires, so a perfect movement still shows rates of 0 or &plusmn;1.</p>
+    </section>
+
+    <section class="box">
+      <span class="no"><b>11</b>Sources</span>
+      <ol class="sources">
+        <li>ISO&nbsp;3159:2009, <i>Timekeeping instruments &mdash; Wrist-chronometers with spring balance oscillator</i>, clauses 3&ndash;7, read in <a href="https://cdn.standards.iteh.ai/samples/54804/5a102f6759ed4df194254936a12171da/ISO-3159-2009.pdf">the publisher&rsquo;s preview at iTeh Standards</a>; and ISO&nbsp;3159:1976, clause&nbsp;7, in <a href="https://cdn.standards.iteh.ai/samples/8332/ff6751e3cdd743e9826eac35f5104cf6/ISO-3159-1976.pdf">its preview</a>. &copy; ISO; short quotations and the published limits only.</li>
+        <li>Wikipedia, <a href="https://en.wikipedia.org/wiki/COSC">&ldquo;COSC&rdquo;</a> (CC&nbsp;BY-SA&nbsp;4.0): section &ldquo;Observatory trials and standards before 1973&rdquo; for the bureaux&rsquo; &minus;1/+10 of 1961&ndash;73, citing von&nbsp;Osterhausen; the testing section for daily winding; and its table, citing COSC, for the quartz window of &plusmn;0.07&nbsp;s/d.</li>
+        <li>Omega, <a href="https://www.omegawatches.com/masterchronometercertification">&ldquo;Master Chronometer certification&rdquo;</a>, for the METAS window (&ldquo;0/+5 to 0/+7 seconds per day, depending on calibre size&rdquo;) and its 33&nbsp;&deg;C on-wrist and 23&nbsp;&deg;C off-wrist conditions. A maker&rsquo;s page; short quotation.</li>
+      </ol>
+      <p class="small">Simulation: plain JavaScript in this page (<a href="sim.js">sim.js</a>). Your runs use fresh random numbers each time.</p>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <a href="/">← Register</a>
+    <a href="https://unpromptedworks.com/#about">About this experiment: an AI made this site</a>
+  </footer>
+</main>
+<script src="sim.js"></script>
+</body>
+</html>
